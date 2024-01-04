@@ -1,4 +1,5 @@
 [versions]
+agp = "8.2.1"
 kotlin = "1.9.0"
 core-ktx = "1.12.0"
 lifecycle-runtime-ktx = "2.6.2"
@@ -8,10 +9,13 @@ compose-navigation = "2.7.6"
 hilt = "2.48"
 hilt-navigation = "1.1.0"
 
-agp = "8.2.1"
 junit = "4.13.2"
 androidx-test-ext-junit = "1.1.5"
 espresso-core = "3.5.1"
+appcompat = "1.6.1"
+material = "1.9.0"
+gradle-tools = "7.3.1"
+kotlin-gradle-plugin = "1.8.10"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -30,8 +34,13 @@ espresso-core = { group = "androidx.test.espresso", name = "espresso-core", vers
 ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+gradle-tools = { group = "com.android.tools.build", name = "gradle", version.ref = "gradle-tools" }
+kotlin-gradle-plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin-gradle-plugin" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+androidLibrary = { id = "com.android.library", version.ref = "agp" }
 
