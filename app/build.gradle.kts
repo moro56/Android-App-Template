@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("module-plugin")
+    id("compose-plugin")
 }
 
 android {
@@ -14,13 +15,6 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
-
-        buildFeatures {
-            compose = true
-        }
-        composeOptions {
-            kotlinCompilerExtensionVersion = "1.5.1"
-        }
     }
     packaging {
         resources {
@@ -32,17 +26,10 @@ android {
 dependencies {
     implementation(libs.core.ktx)
     implementation(libs.lifecycle.runtime.ktx)
-    implementation(libs.compose.activity)
-    implementation(platform(libs.compose.bom))
-    implementation(libs.compose.ui)
-    implementation(libs.compose.ui.graphics)
     implementation(libs.ui.tooling.preview)
-    implementation(libs.compose.material3)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
-    androidTestImplementation(platform(libs.compose.bom))
     androidTestImplementation(libs.ui.test.junit4)
-    debugImplementation(libs.compose.ui.tooling)
     debugImplementation(libs.ui.test.manifest)
 }

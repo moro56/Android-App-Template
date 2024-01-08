@@ -18,5 +18,9 @@ gradlePlugin {
             id = "module-plugin"
             implementationClass = "com.app.gradle.ModulePlugin"
         }
+        register("compose-plugin") {
+            id = "compose-plugin"
+            implementationClass = "com.app.gradle.ComposePlugin"
+        }
     }
 }

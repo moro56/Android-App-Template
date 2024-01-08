@@ -4,6 +4,7 @@ kotlin = "1.9.0"
 core-ktx = "1.12.0"
 lifecycle-runtime-ktx = "2.6.2"
 compose-bom = "2023.10.01"
+compose-compiler = "1.5.1"
 compose-activity = "1.8.2"
 compose-navigation = "2.7.6"
 hilt = "2.48"
@@ -38,6 +39,9 @@ appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "a
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 gradle-tools = { group = "com.android.tools.build", name = "gradle", version.ref = "gradle-tools" }
 kotlin-gradle-plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin-gradle-plugin" }
+
+[bundles]
+compose = ["compose.material3", "compose.ui", "compose.ui.graphics", "compose.activity", "compose.navigation"]
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
