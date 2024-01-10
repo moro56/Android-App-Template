@@ -27,7 +27,16 @@ android {
 }
 
 dependencies {
+    // Core
     implementation(libs.core.ktx)
+
+    implementation(project(":features:feature-a:api"))
+    implementation(project(":features:feature-a:impl"))
+    implementation(project(":features:feature-b:api"))
+    implementation(project(":features:feature-b:impl"))
+    implementation(project(":features:feature-c:api"))
+    implementation(project(":features:feature-c:impl"))
+
     implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.ui.tooling.preview)
     testImplementation(libs.junit)

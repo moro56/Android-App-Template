@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlinAndroid)
     id("compose-plugin")
     id("module-plugin")
+    id("hilt-plugin")
 }
 
 android {

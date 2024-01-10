@@ -12,5 +12,5 @@ import dagger.hilt.android.components.ActivityComponent
 object FeatureCModule {
 
     @Provides
-    fun providesModuleAFeatureApi(): ModuleCApi = ModuleC()
+    fun providesModuleCFeatureApi(): ModuleCApi = ModuleC()
 }
