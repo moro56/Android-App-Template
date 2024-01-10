@@ -22,5 +22,13 @@ gradlePlugin {
             id = "compose-plugin"
             implementationClass = "com.app.gradle.ComposePlugin"
         }
+        register("core-plugin") {
+            id = "core-plugin"
+            implementationClass = "com.app.gradle.CorePlugin"
+        }
+        register("hilt-plugin") {
+            id = "hilt-plugin"
+            implementationClass = "com.app.gradle.HiltPlugin"
+        }
     }
 }
