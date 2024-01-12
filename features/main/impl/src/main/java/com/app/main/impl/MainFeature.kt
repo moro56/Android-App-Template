@@ -15,7 +15,7 @@ class MainFeature : MainFeatureApi {
         modifier: Modifier
     ) {
         navGraphBuilder.composable(MainFeatureApi.Destinations.Main.route) {
-            MainScreen()
+            MainScreen(modifier = modifier)
         }
     }
 }

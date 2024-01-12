@@ -8,7 +8,7 @@ plugins {
 }
 
 android {
-    namespace = "com.app.featurey.impl"
+    namespace = "com.app.featurez.impl"
 }
 
 hilt {
@@ -19,6 +19,5 @@ dependencies {
     // Core
     implementation(libs.core.ktx)
 
-    implementation(project(":features:feature-y:api"))
     implementation(project(":features:feature-z:api"))
 }

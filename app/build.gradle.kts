@@ -42,6 +42,8 @@ dependencies {
     implementation(project(":features:feature-x:impl"))
     implementation(project(":features:feature-y:api"))
     implementation(project(":features:feature-y:impl"))
+    implementation(project(":features:feature-z:api"))
+    implementation(project(":features:feature-z:impl"))
     implementation(project(":features:main:api"))
     implementation(project(":features:main:impl"))
 

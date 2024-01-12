@@ -16,7 +16,7 @@ class ModuleX : ModuleXApi {
         modifier: Modifier
     ) {
         navGraphBuilder.composable(ModuleXApi.Destinations.FeatureX.route) {
-            FeatureXScreen(onGoToCClick = {
+            FeatureXScreen(modifier = modifier, onGoToCClick = {
                 navController.navigate(ModuleCApi.Destinations.FeatureC.navigateTo())
             })
         }

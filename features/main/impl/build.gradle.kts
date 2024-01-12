@@ -23,4 +23,5 @@ dependencies {
     implementation(project(":features:feature-x:api"))
     implementation(project(":features:feature-y:api"))
     implementation(project(":features:feature-c:api"))
+    implementation(project(":features:feature-z:api"))
 }

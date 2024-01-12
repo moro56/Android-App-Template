@@ -16,7 +16,7 @@ class ModuleA : ModuleAApi {
         modifier: Modifier
     ) {
         navGraphBuilder.composable(ModuleAApi.Destinations.FeatureA.route) {
-            FeatureAScreen(onGoToBClick = {
+            FeatureAScreen(modifier = modifier, onGoToBClick = {
                 navController.navigate(ModuleBApi.Destinations.FeatureB.navigateTo())
             })
         }

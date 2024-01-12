@@ -6,6 +6,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import com.app.featurey.api.ModuleYApi
 import com.app.featurey.impl.ui.FeatureYScreen
+import com.app.featurez.api.ModuleZApi
 
 class ModuleY : ModuleYApi {
 
@@ -15,7 +16,9 @@ class ModuleY : ModuleYApi {
         modifier: Modifier
     ) {
         navGraphBuilder.composable(ModuleYApi.Destinations.FeatureY.route) {
-            FeatureYScreen()
+            FeatureYScreen(modifier = modifier, onGoToZClick = {
+                navController.navigate(ModuleZApi.Destinations.FeatureZ.navigateTo())
+            })
         }
     }
 }

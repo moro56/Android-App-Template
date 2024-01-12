@@ -3,7 +3,6 @@ package com.app.featurea.impl.ui
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -15,21 +14,23 @@ import com.app.core.base.annotations.PreviewDefaultLight
 /**
  * Feature A screen
  *
+ * @param modifier compose modifier
  * @param onGoToBClick trigger for navigating to Feature B
  */
 @Composable
-fun FeatureAScreen(onGoToBClick: () -> Unit) {
-    FeatureAScreenContent(onGoToBClick = onGoToBClick)
+fun FeatureAScreen(modifier: Modifier, onGoToBClick: () -> Unit) {
+    FeatureAScreenContent(modifier = modifier, onGoToBClick = onGoToBClick)
 }
 
 /**
  * Feature A screen content
  *
+ * @param modifier compose modifier
  * @param onGoToBClick trigger for navigating to Feature B
  */
 @Composable
-fun FeatureAScreenContent(onGoToBClick: () -> Unit) {
-    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+fun FeatureAScreenContent(modifier: Modifier, onGoToBClick: () -> Unit) {
+    Box(modifier = modifier, contentAlignment = Alignment.Center) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(12.dp)
@@ -45,5 +46,5 @@ fun FeatureAScreenContent(onGoToBClick: () -> Unit) {
 @PreviewDefaultLight
 @Composable
 fun FeatureAScreenContentPreview() {
-    FeatureAScreenContent {}
+    FeatureAScreenContent(Modifier) {}
 }

@@ -17,7 +17,7 @@ class ModuleB : ModuleBApi {
         modifier: Modifier
     ) {
         navGraphBuilder.composable(ModuleBApi.Destinations.FeatureB.route) {
-            FeatureBScreen(onGoToMainClick = {
+            FeatureBScreen(modifier = modifier, onGoToMainClick = {
                 navController.navigate(MainFeatureApi.Destinations.Main.navigateTo()) {
                     popUpTo(ModuleAApi.Destinations.FeatureA.route) {
                         inclusive = true

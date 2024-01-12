@@ -1,5 +1,11 @@
 @file:Suppress("UnstableApiUsage")
 
+include(":features:feature-z:impl")
+
+
+include(":features:feature-z:api")
+
+
 pluginManagement {
     includeBuild("plugins")
     repositories {

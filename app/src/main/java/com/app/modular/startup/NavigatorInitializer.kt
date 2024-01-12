@@ -8,6 +8,7 @@ import com.app.featureb.api.ModuleBApi
 import com.app.featurec.api.ModuleCApi
 import com.app.featurex.api.ModuleXApi
 import com.app.featurey.api.ModuleYApi
+import com.app.featurez.api.ModuleZApi
 import com.app.main.api.MainFeatureApi
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -31,13 +32,16 @@ class NavigatorInitializer : Initializer<Navigator> {
     lateinit var featureY: ModuleYApi
 
     @Inject
+    lateinit var featureZ: ModuleZApi
+
+    @Inject
     lateinit var main: MainFeatureApi
 
     override fun create(context: Context): Navigator {
         InitializerEntryPoint.resolve(context).inject(this)
 
         Navigator.initialize(
-            features = listOf(featureA, featureB, featureC, featureX, featureY, main),
+            features = listOf(featureA, featureB, featureC, featureX, featureY, featureZ, main),
             modalFeatures = listOf()
         )
         return Navigator

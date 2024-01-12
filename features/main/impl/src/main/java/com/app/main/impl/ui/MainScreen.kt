@@ -13,18 +13,23 @@ import com.app.main.impl.ui.components.BottomNavBar
 
 /**
  * Main screen
+ *
+ * @param modifier compose modifier
+ * @param navController navigation controller
  */
 @Composable
-fun MainScreen(navController: NavHostController = rememberNavController()) {
+fun MainScreen(modifier: Modifier, navController: NavHostController = rememberNavController()) {
     Scaffold(
-        modifier = Modifier.fillMaxSize(),
+        modifier = modifier,
         bottomBar = {
             BottomNavBar(navController = navController)
         }
     ) {
         MainGraph(
             navController = navController,
-            modifier = Modifier.fillMaxSize().padding(it)
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(it)
         )
     }
 }
@@ -32,5 +37,5 @@ fun MainScreen(navController: NavHostController = rememberNavController()) {
 @PreviewDefaultLight
 @Composable
 fun MainScreenPreview() {
-    MainScreen()
+    MainScreen(Modifier)
 }

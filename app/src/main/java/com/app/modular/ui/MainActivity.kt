@@ -6,8 +6,13 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
+import com.app.core.base.state.GlobalState
+import com.app.core.base.state.LocalAppState
+import com.app.core.base.state.globalStateSaver
 import com.app.modular.navigation.AppNavGraph
 import com.app.modular.ui.theme.AndroidAppTemplateTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,13 +26,21 @@ class MainActivity : ComponentActivity() {
         setContent {
             AndroidAppTemplateTheme {
                 val navController = rememberNavController()
+                val globalState = rememberSaveable(saver = globalStateSaver) {
+                    GlobalState(userLoggedIn = false)
+                }
 
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    AppNavGraph(navController = navController, modifier = Modifier.fillMaxSize())
+                    CompositionLocalProvider(LocalAppState provides globalState) {
+                        AppNavGraph(
+                            navController = navController,
+                            modifier = Modifier.fillMaxSize()
+                        )
+                    }
                 }
             }
         }

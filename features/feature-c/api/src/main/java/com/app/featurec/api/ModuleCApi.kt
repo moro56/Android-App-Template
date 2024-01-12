@@ -13,7 +13,7 @@ interface ModuleCApi : FeatureApi {
          * Feature C screen
          */
         object FeatureC : Destinations(), FeatureDestination {
-            override val route: String = "featureC"
+            override val route: String = "featureXC"
 
             /**
              * Navigate to Feature C screen

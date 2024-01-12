@@ -41,6 +41,9 @@
             <option value="$PROJECT_DIR$/features/feature-y" />
             <option value="$PROJECT_DIR$/features/feature-y/api" />
             <option value="$PROJECT_DIR$/features/feature-y/impl" />
+            <option value="$PROJECT_DIR$/features/feature-z" />
+            <option value="$PROJECT_DIR$/features/feature-z/api" />
+            <option value="$PROJECT_DIR$/features/feature-z/impl" />
             <option value="$PROJECT_DIR$/features/main" />
             <option value="$PROJECT_DIR$/features/main/api" />
             <option value="$PROJECT_DIR$/features/main/impl" />

@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -13,23 +14,32 @@ import com.app.core.base.annotations.PreviewDefaultLight
 
 /**
  * Feature Y screen
+ *
+ * @param modifier compose modifier
+ * @param onGoToZClick trigger for navigating to Feature Z
  */
 @Composable
-fun FeatureYScreen() {
-    FeatureYScreenContent()
+fun FeatureYScreen(modifier: Modifier, onGoToZClick: () -> Unit) {
+    FeatureYScreenContent(modifier = modifier, onGoToZClick = onGoToZClick)
 }
 
 /**
  * Feature Y screen content
+ *
+ * @param modifier compose modifier
+ * @param onGoToZClick trigger for navigating to Feature Z
  */
 @Composable
-fun FeatureYScreenContent() {
-    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+fun FeatureYScreenContent(modifier: Modifier, onGoToZClick: () -> Unit) {
+    Box(modifier = modifier, contentAlignment = Alignment.Center) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             Text(text = "Feature Y")
+            Button(onClick = onGoToZClick) {
+                Text(text = "Go to Z")
+            }
         }
     }
 }
@@ -37,5 +47,5 @@ fun FeatureYScreenContent() {
 @PreviewDefaultLight
 @Composable
 fun FeatureYScreenContentPreview() {
-    FeatureYScreenContent()
+    FeatureYScreenContent(Modifier) {}
 }
