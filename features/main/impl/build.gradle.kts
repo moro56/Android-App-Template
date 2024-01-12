@@ -20,4 +20,7 @@ dependencies {
     implementation(libs.core.ktx)
 
     implementation(project(":features:main:api"))
+    implementation(project(":features:feature-x:api"))
+    implementation(project(":features:feature-y:api"))
+    implementation(project(":features:feature-c:api"))
 }

@@ -15,7 +15,7 @@ class ModuleC : ModuleCApi {
         modifier: Modifier
     ) {
         navGraphBuilder.composable(ModuleCApi.Destinations.FeatureC.route) {
-            FeatureCScreen(onGoBack = {
+            FeatureCScreen(onGoBackClick = {
                 navController.popBackStack()
             })
         }

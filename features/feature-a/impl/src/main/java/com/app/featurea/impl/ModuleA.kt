@@ -7,7 +7,6 @@ import androidx.navigation.compose.composable
 import com.app.featurea.api.ModuleAApi
 import com.app.featurea.impl.ui.FeatureAScreen
 import com.app.featureb.api.ModuleBApi
-import com.app.featurec.api.ModuleCApi
 
 class ModuleA : ModuleAApi {
 
@@ -19,8 +18,6 @@ class ModuleA : ModuleAApi {
         navGraphBuilder.composable(ModuleAApi.Destinations.FeatureA.route) {
             FeatureAScreen(onGoToBClick = {
                 navController.navigate(ModuleBApi.Destinations.FeatureB.navigateTo())
-            }, onGoToCClick = {
-                navController.navigate(ModuleCApi.Destinations.FeatureC.navigateTo())
             })
         }
     }

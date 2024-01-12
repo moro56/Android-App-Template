@@ -16,21 +16,19 @@ import com.app.core.base.annotations.PreviewDefaultLight
  * Feature A screen
  *
  * @param onGoToBClick trigger for navigating to Feature B
- * @param onGoToCClick trigger for navigating to Feature C
  */
 @Composable
-fun FeatureAScreen(onGoToBClick: () -> Unit, onGoToCClick: () -> Unit) {
-    FeatureAScreenContent(onGoToBClick = onGoToBClick, onGoToCClick = onGoToCClick)
+fun FeatureAScreen(onGoToBClick: () -> Unit) {
+    FeatureAScreenContent(onGoToBClick = onGoToBClick)
 }
 
 /**
  * Feature A screen content
  *
  * @param onGoToBClick trigger for navigating to Feature B
- * @param onGoToCClick trigger for navigating to Feature C
  */
 @Composable
-fun FeatureAScreenContent(onGoToBClick: () -> Unit, onGoToCClick: () -> Unit) {
+fun FeatureAScreenContent(onGoToBClick: () -> Unit) {
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -40,9 +38,6 @@ fun FeatureAScreenContent(onGoToBClick: () -> Unit, onGoToCClick: () -> Unit) {
             Button(onClick = onGoToBClick) {
                 Text(text = "Go to B")
             }
-            Button(onClick = onGoToCClick) {
-                Text(text = "Go to C")
-            }
         }
     }
 }
@@ -50,5 +45,5 @@ fun FeatureAScreenContent(onGoToBClick: () -> Unit, onGoToCClick: () -> Unit) {
 @PreviewDefaultLight
 @Composable
 fun FeatureAScreenContentPreview() {
-    FeatureAScreenContent({}, {})
+    FeatureAScreenContent {}
 }

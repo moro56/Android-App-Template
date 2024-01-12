@@ -15,27 +15,27 @@ import com.app.core.base.annotations.PreviewDefaultLight
 /**
  * Feature C screen
  *
- * @param onGoBack trigger for navigating back
+ * @param onGoBackClick trigger for navigating back
  */
 @Composable
-fun FeatureCScreen(onGoBack: () -> Unit) {
-    FeatureCScreenContent(onGoBack = onGoBack)
+fun FeatureCScreen(onGoBackClick: () -> Unit) {
+    FeatureCScreenContent(onGoBackClick = onGoBackClick)
 }
 
 /**
  * Feature C screen content
  *
- * @param onGoBack trigger for navigating back
+ * @param onGoBackClick trigger for navigating back
  */
 @Composable
-fun FeatureCScreenContent(onGoBack: () -> Unit) {
+fun FeatureCScreenContent(onGoBackClick: () -> Unit) {
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             Text(text = "Feature C")
-            Button(onClick = onGoBack) {
+            Button(onClick = onGoBackClick) {
                 Text(text = "Go back")
             }
         }

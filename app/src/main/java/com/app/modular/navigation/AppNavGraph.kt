@@ -10,7 +10,7 @@ import com.app.core.navigation.Navigator
 import com.app.core.navigation.exts.register
 import com.app.featurea.api.ModuleAApi
 import com.app.featureb.api.ModuleBApi
-import com.app.featurec.api.ModuleCApi
+import com.app.main.api.MainFeatureApi
 
 /**
  * NavHost component that defines the navigation graph
@@ -28,17 +28,17 @@ fun AppNavGraph(modifier: Modifier = Modifier, navController: NavHostController)
         startDestination = ModuleAApi.Destinations.FeatureA.route
     ) {
         register(
+            Navigator.retrieveFeature(MainFeatureApi::class),
+            navController = navController,
+            modifier = modifier
+        )
+        register(
             Navigator.retrieveFeature(ModuleAApi::class),
             navController = navController,
             modifier = modifier
         )
         register(
             Navigator.retrieveFeature(ModuleBApi::class),
-            navController = navController,
-            modifier = modifier
-        )
-        register(
-            Navigator.retrieveFeature(ModuleCApi::class),
             navController = navController,
             modifier = modifier
         )

@@ -38,6 +38,12 @@ dependencies {
     implementation(project(":features:feature-b:impl"))
     implementation(project(":features:feature-c:api"))
     implementation(project(":features:feature-c:impl"))
+    implementation(project(":features:feature-x:api"))
+    implementation(project(":features:feature-x:impl"))
+    implementation(project(":features:feature-y:api"))
+    implementation(project(":features:feature-y:impl"))
+    implementation(project(":features:main:api"))
+    implementation(project(":features:main:impl"))
 
     implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.ui.tooling.preview)
