@@ -14,6 +14,11 @@ interface ModuleBApi : FeatureApi {
          */
         object FeatureB : Destinations(), FeatureDestination {
             override val route: String = "featureB"
+
+            /**
+             * Navigate to Feature B screen
+             */
+            fun navigateTo() = route
         }
     }
 }

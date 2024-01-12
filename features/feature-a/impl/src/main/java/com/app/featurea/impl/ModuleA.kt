@@ -1,11 +1,13 @@
 package com.app.featurea.impl
 
-import androidx.compose.material3.Text
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import com.app.featurea.api.ModuleAApi
+import com.app.featurea.impl.ui.FeatureAScreen
+import com.app.featureb.api.ModuleBApi
+import com.app.featurec.api.ModuleCApi
 
 class ModuleA : ModuleAApi {
 
@@ -15,7 +17,11 @@ class ModuleA : ModuleAApi {
         modifier: Modifier
     ) {
         navGraphBuilder.composable(ModuleAApi.Destinations.FeatureA.route) {
-            Text(text = "Feature A")
+            FeatureAScreen(onGoToBClick = {
+                navController.navigate(ModuleBApi.Destinations.FeatureB.navigateTo())
+            }, onGoToCClick = {
+                navController.navigate(ModuleCApi.Destinations.FeatureC.navigateTo())
+            })
         }
     }
 }
