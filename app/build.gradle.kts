@@ -29,6 +29,8 @@ android {
 dependencies {
     // Core
     implementation(libs.core.ktx)
+    // App Startup
+    implementation(libs.app.startup)
 
     implementation(project(":features:feature-a:api"))
     implementation(project(":features:feature-a:impl"))

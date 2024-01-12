@@ -47,7 +47,8 @@ class ModulePlugin : Plugin<Project> {
                         kotlinOptions {
                             jvmTarget = JavaVersion.VERSION_17.toString()
                             freeCompilerArgs = listOf(
-                                "-Xstring-concat=inline"
+                                "-Xstring-concat=inline",
+                                "-Xlint:deprecation"
                             )
                         }
                     }
