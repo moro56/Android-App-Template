@@ -1,11 +1,5 @@
 @file:Suppress("UnstableApiUsage")
 
-include(":features:feature-z:impl")
-
-
-include(":features:feature-z:api")
-
-
 pluginManagement {
     includeBuild("plugins")
     repositories {
@@ -37,5 +31,8 @@ include(":features:feature-y:impl")
 include(":features:feature-y:api")
 include(":features:feature-x:impl")
 include(":features:feature-x:api")
+include(":features:feature-z:impl")
+include(":features:feature-z:api")
 include(":features:main:impl")
 include(":features:main:api")
+include(":ui")

@@ -13,6 +13,7 @@ class FeatureAViewModel :
     override fun handleEvent(event: FeatureAContract.Event) {
         when (event) {
             FeatureAContract.Event.CreateRandomNumber -> createRandomNumber()
+            FeatureAContract.Event.ShowSnackBar -> showSnackBar()
         }
     }
 
@@ -21,5 +22,12 @@ class FeatureAViewModel :
      */
     private fun createRandomNumber() {
         setState { copy(number = (1..100).random()) }
+    }
+
+    /**
+     * Example method to show the SnackBar from an effect
+     */
+    private fun showSnackBar() {
+        setEffect { FeatureAContract.Effect.ShowSnackBar }
     }
 }

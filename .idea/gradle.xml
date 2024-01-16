@@ -48,6 +48,7 @@
             <option value="$PROJECT_DIR$/features/main/api" />
             <option value="$PROJECT_DIR$/features/main/impl" />
             <option value="$PROJECT_DIR$/plugins" />
+            <option value="$PROJECT_DIR$/ui" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />

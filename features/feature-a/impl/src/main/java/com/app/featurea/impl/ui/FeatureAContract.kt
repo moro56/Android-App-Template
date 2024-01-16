@@ -14,6 +14,11 @@ class FeatureAContract {
          * Create random number event
          */
         data object CreateRandomNumber : Event()
+
+        /**
+         * Show SnackBar
+         */
+        data object ShowSnackBar : Event()
     }
 
     /**
