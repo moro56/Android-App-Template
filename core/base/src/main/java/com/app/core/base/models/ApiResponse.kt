@@ -4,7 +4,6 @@ package com.app.core.base.models
  * Sealed class for defining the result of an Api request
  */
 sealed class ApiResponse<out T> {
-
     /**
      * Success case
      *

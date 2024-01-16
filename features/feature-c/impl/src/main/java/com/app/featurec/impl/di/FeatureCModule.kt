@@ -10,7 +10,6 @@ import dagger.hilt.components.SingletonComponent
 @Module
 @InstallIn(SingletonComponent::class)
 object FeatureCModule {
-
     @Provides
     fun providesModuleCFeatureApi(): ModuleCApi = ModuleC()
 }

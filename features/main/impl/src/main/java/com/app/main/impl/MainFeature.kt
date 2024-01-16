@@ -8,7 +8,6 @@ import com.app.main.api.MainFeatureApi
 import com.app.main.impl.ui.MainScreen
 
 class MainFeature : MainFeatureApi {
-
     override fun registerGraph(
         navGraphBuilder: NavGraphBuilder,
         navController: NavController,

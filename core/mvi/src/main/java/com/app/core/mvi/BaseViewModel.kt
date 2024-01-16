@@ -12,7 +12,6 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 abstract class BaseViewModel<Event : UIEvent, State : UIState, Effect : UIEffect> : ViewModel() {
-
     private val initialState: State by lazy { createInitialState() }
 
     /**

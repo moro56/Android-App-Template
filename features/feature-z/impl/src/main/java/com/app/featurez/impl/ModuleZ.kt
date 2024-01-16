@@ -8,7 +8,6 @@ import com.app.featurez.api.ModuleZApi
 import com.app.featurez.impl.ui.FeatureZScreen
 
 class ModuleZ : ModuleZApi {
-
     override fun registerGraph(
         navGraphBuilder: NavGraphBuilder,
         navController: NavController,

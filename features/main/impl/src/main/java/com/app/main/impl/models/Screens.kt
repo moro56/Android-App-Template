@@ -9,7 +9,6 @@ import com.app.featurex.api.ModuleXApi
 import com.app.featurey.api.ModuleYApi
 
 sealed class Screens(val route: String, @StringRes val title: Int, val icon: ImageVector) {
-
     data object FeatureXScreen : Screens(
         ModuleXApi.Destinations.FeatureX.route,
         android.R.string.copy,

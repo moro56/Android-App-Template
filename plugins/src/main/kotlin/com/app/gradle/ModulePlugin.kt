@@ -19,6 +19,7 @@ class ModulePlugin : Plugin<Project> {
             pluginManager.apply {
                 apply("kotlin-android")
                 apply("kotlin-kapt")
+                apply("org.jlleitschuh.gradle.ktlint")
             }
 
             configure<KaptExtension> {

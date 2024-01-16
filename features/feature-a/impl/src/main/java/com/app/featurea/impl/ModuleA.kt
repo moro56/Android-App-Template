@@ -9,7 +9,6 @@ import com.app.featurea.impl.ui.FeatureAScreen
 import com.app.featureb.api.ModuleBApi
 
 class ModuleA : ModuleAApi {
-
     override fun registerGraph(
         navGraphBuilder: NavGraphBuilder,
         navController: NavController,

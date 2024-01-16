@@ -15,7 +15,6 @@ import javax.inject.Singleton
 
 @Singleton
 class NavigatorInitializer : Initializer<Navigator> {
-
     @Inject
     lateinit var featureA: ModuleAApi
 

@@ -26,6 +26,11 @@ android {
     }
 }
 
+ktlint {
+    android.set(true)
+    outputColorName.set("RED")
+}
+
 dependencies {
     // Core
     implementation(libs.core.ktx)

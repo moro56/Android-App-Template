@@ -11,7 +11,6 @@ import androidx.navigation.NavGraphBuilder
  * @property show show this feature modal
  */
 interface ModalFeatureApi {
-
     val featureRoute: String
     var show: (currentRoute: String, params: Map<String, String>) -> Unit
 
