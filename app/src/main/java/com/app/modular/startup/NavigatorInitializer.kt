@@ -5,6 +5,7 @@ import androidx.startup.Initializer
 import com.app.core.navigation.Navigator
 import com.app.featurea.api.ModuleAApi
 import com.app.featureb.api.ModuleBApi
+import com.app.featureb.api.ModuleBModalApi
 import com.app.featurec.api.ModuleCApi
 import com.app.featurex.api.ModuleXApi
 import com.app.featurey.api.ModuleYApi
@@ -20,6 +21,9 @@ class NavigatorInitializer : Initializer<Navigator> {
 
     @Inject
     lateinit var featureB: ModuleBApi
+
+    @Inject
+    lateinit var modalFeatureB: ModuleBModalApi
 
     @Inject
     lateinit var featureC: ModuleCApi
@@ -41,7 +45,7 @@ class NavigatorInitializer : Initializer<Navigator> {
 
         Navigator.initialize(
             features = listOf(featureA, featureB, featureC, featureX, featureY, featureZ, main),
-            modalFeatures = listOf()
+            modalFeatures = listOf(modalFeatureB)
         )
         return Navigator
     }

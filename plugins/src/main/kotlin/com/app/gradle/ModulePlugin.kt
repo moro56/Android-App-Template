@@ -49,7 +49,8 @@ class ModulePlugin : Plugin<Project> {
                             jvmTarget = JavaVersion.VERSION_17.toString()
                             freeCompilerArgs = listOf(
                                 "-Xstring-concat=inline",
-                                "-Xlint:deprecation"
+                                "-Xlint:deprecation",
+                                "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api"
                             )
                         }
                     }

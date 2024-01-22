@@ -30,12 +30,14 @@ import kotlinx.coroutines.launch
  *
  * @param modifier compose modifier
  * @param onGoToBClick trigger for navigating to Feature B
+ * @param onShowFeatureBModalClick trigger to show the Feature B Modal
  * @param viewModel viewModel
  */
 @Composable
 fun FeatureAScreen(
     modifier: Modifier,
     onGoToBClick: () -> Unit,
+    onShowFeatureBModalClick: () -> Unit,
     viewModel: FeatureAViewModel = hiltViewModel()
 ) {
     val coroutineScope = rememberCoroutineScope()
@@ -66,7 +68,8 @@ fun FeatureAScreen(
             },
             onShowSnackBarClick = {
                 viewModel.sendEvent(FeatureAContract.Event.ShowSnackBar)
-            }
+            },
+            onShowFeatureBModalClick = onShowFeatureBModalClick
         )
     }
 }
@@ -79,6 +82,7 @@ fun FeatureAScreen(
  * @param onGoToBClick trigger for navigating to Feature B
  * @param onCreateRandomNumberClick trigger to creating a new random number
  * @param onShowSnackBarClick trigger to show the SnackBar
+ * @param onShowFeatureBModalClick trigger to show the Feature B Modal
  */
 @Composable
 fun FeatureAScreenContent(
@@ -86,7 +90,8 @@ fun FeatureAScreenContent(
     state: FeatureAContract.State,
     onGoToBClick: () -> Unit,
     onCreateRandomNumberClick: () -> Unit,
-    onShowSnackBarClick: () -> Unit
+    onShowSnackBarClick: () -> Unit,
+    onShowFeatureBModalClick: () -> Unit
 ) {
     Box(modifier = modifier, contentAlignment = Alignment.Center) {
         Column(
@@ -107,6 +112,9 @@ fun FeatureAScreenContent(
             Button(onClick = onShowSnackBarClick) {
                 Text(text = "Show SnackBar")
             }
+            Button(onClick = onShowFeatureBModalClick) {
+                Text(text = "Show Feature B Modal")
+            }
         }
     }
 }
@@ -115,6 +123,6 @@ fun FeatureAScreenContent(
 @Composable
 fun FeatureAScreenContentPreview() {
     ThemePreviewWrapper {
-        FeatureAScreenContent(Modifier.fillMaxSize(), FeatureAContract.State(0), {}, {}) {}
+        FeatureAScreenContent(Modifier.fillMaxSize(), FeatureAContract.State(0), {}, {}, {}) {}
     }
 }
