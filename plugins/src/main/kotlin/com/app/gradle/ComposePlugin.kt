@@ -61,7 +61,20 @@ class ComposePlugin : Plugin<Project> {
             add("implementation", platform(bom))
             add("implementation", compose)
             add("debugImplementation", composeTooling)
+
+            val test = libs.findBundle("test").get()
+            val androidTest = libs.findBundle("android-test").get()
+            val composeTest = libs.findLibrary("ui-test-junit4").get()
+            val composeManifest = libs.findLibrary("ui-test-manifest").get()
+
+            add("implementation", compose)
+            add("testImplementation", test)
+            add("testImplementation", platform(bom))
+            add("testImplementation", composeTest)
+            add("androidTestImplementation", androidTest)
             add("androidTestImplementation", platform(bom))
+            add("androidTestImplementation", composeTest)
+            add("debugImplementation", composeManifest)
         }
     }
 }
