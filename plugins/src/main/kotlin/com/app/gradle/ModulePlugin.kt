@@ -34,7 +34,7 @@ class ModulePlugin : Plugin<Project> {
                         minSdk = 26
                         targetSdk = 34
 
-                        testInstrumentationRunner = "androidx.tets.runner.AndroidJUnitRunner"
+                        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
                     }
 
                     compileOptions {
