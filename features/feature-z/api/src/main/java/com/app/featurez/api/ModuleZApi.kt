@@ -7,7 +7,6 @@ import com.app.core.navigation.FeatureDestination
  * Interface that defines the module Z feature
  */
 interface ModuleZApi : FeatureApi {
-
     sealed class Destinations {
         /**
          * Feature Z screen

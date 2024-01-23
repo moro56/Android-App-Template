@@ -10,6 +10,8 @@ import androidx.navigation.compose.rememberNavController
 import com.app.core.base.annotations.PreviewDefaultLight
 import com.app.main.impl.navigation.MainGraph
 import com.app.main.impl.ui.components.BottomNavBar
+import com.app.ui.AppSnackBar
+import com.app.ui.LocalSnackBarHostState
 
 /**
  * Main screen
@@ -19,8 +21,13 @@ import com.app.main.impl.ui.components.BottomNavBar
  */
 @Composable
 fun MainScreen(modifier: Modifier, navController: NavHostController = rememberNavController()) {
+    val snackBarHostState = LocalSnackBarHostState.current
+
     Scaffold(
         modifier = modifier,
+        snackbarHost = {
+            AppSnackBar(state = snackBarHostState)
+        },
         bottomBar = {
             BottomNavBar(navController = navController)
         }

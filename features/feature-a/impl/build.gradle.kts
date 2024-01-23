@@ -21,4 +21,5 @@ dependencies {
 
     implementation(project(":features:feature-a:api"))
     implementation(project(":features:feature-b:api"))
+    implementation(project(":ui"))
 }

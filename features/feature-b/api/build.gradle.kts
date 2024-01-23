@@ -5,7 +5,6 @@ plugins {
     id("module-plugin")
 }
 
-
 android {
     namespace = "com.app.featureb.api"
 }

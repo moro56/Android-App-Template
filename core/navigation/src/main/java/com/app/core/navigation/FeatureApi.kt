@@ -8,7 +8,6 @@ import androidx.navigation.NavGraphBuilder
  * Interface that defines a feature
  */
 interface FeatureApi {
-
     /**
      * Register the feature to the navigation graph
      *

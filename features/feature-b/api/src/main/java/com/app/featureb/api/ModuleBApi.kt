@@ -7,7 +7,6 @@ import com.app.core.navigation.FeatureDestination
  * Interface that defines the module B feature
  */
 interface ModuleBApi : FeatureApi {
-
     sealed class Destinations {
         /**
          * Feature B screen

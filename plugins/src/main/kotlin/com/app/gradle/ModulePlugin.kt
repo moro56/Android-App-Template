@@ -19,6 +19,7 @@ class ModulePlugin : Plugin<Project> {
             pluginManager.apply {
                 apply("kotlin-android")
                 apply("kotlin-kapt")
+                apply("org.jlleitschuh.gradle.ktlint")
             }
 
             configure<KaptExtension> {
@@ -48,7 +49,8 @@ class ModulePlugin : Plugin<Project> {
                             jvmTarget = JavaVersion.VERSION_17.toString()
                             freeCompilerArgs = listOf(
                                 "-Xstring-concat=inline",
-                                "-Xlint:deprecation"
+                                "-Xlint:deprecation",
+                                "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api"
                             )
                         }
                     }

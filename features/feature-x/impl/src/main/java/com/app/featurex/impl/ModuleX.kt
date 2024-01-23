@@ -9,7 +9,6 @@ import com.app.featurex.api.ModuleXApi
 import com.app.featurex.impl.ui.FeatureXScreen
 
 class ModuleX : ModuleXApi {
-
     override fun registerGraph(
         navGraphBuilder: NavGraphBuilder,
         navController: NavController,

@@ -7,7 +7,6 @@ import com.app.core.navigation.FeatureDestination
  * Interface that defines the main feature
  */
 interface MainFeatureApi : FeatureApi {
-
     sealed class Destinations {
         /**
          * Main screen

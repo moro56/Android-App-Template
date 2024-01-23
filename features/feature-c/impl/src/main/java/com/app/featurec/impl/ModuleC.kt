@@ -8,7 +8,6 @@ import com.app.featurec.api.ModuleCApi
 import com.app.featurec.impl.ui.FeatureCScreen
 
 class ModuleC : ModuleCApi {
-
     override fun registerGraph(
         navGraphBuilder: NavGraphBuilder,
         navController: NavController,

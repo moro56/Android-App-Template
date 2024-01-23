@@ -26,6 +26,11 @@ android {
     }
 }
 
+ktlint {
+    android.set(true)
+    outputColorName.set("RED")
+}
+
 dependencies {
     // Core
     implementation(libs.core.ktx)
@@ -46,6 +51,7 @@ dependencies {
     implementation(project(":features:feature-z:impl"))
     implementation(project(":features:main:api"))
     implementation(project(":features:main:impl"))
+    implementation(project(":ui"))
 
     implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.ui.tooling.preview)

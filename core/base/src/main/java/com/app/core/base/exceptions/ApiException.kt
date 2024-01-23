@@ -4,7 +4,6 @@ package com.app.core.base.exceptions
  * Different types of Api exception
  */
 sealed class ApiException : Exception() {
-
     /**
      * Exception that has a reason defined
      *

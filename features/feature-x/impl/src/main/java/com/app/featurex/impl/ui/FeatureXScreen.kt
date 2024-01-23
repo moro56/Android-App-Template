@@ -18,7 +18,10 @@ import com.app.core.base.annotations.PreviewDefaultLight
  * @param onGoToCClick trigger for navigating to Feature C
  */
 @Composable
-fun FeatureXScreen(modifier: Modifier, onGoToCClick: () -> Unit) {
+fun FeatureXScreen(
+    modifier: Modifier,
+    onGoToCClick: () -> Unit
+) {
     FeatureXScreenContent(modifier = modifier, onGoToCClick = onGoToCClick)
 }
 
@@ -29,7 +32,10 @@ fun FeatureXScreen(modifier: Modifier, onGoToCClick: () -> Unit) {
  * @param onGoToCClick trigger for navigating to Feature C
  */
 @Composable
-fun FeatureXScreenContent(modifier: Modifier, onGoToCClick: () -> Unit) {
+fun FeatureXScreenContent(
+    modifier: Modifier,
+    onGoToCClick: () -> Unit
+) {
     Box(modifier = modifier, contentAlignment = Alignment.Center) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,

@@ -10,7 +10,6 @@ import dagger.hilt.components.SingletonComponent
 @Module
 @InstallIn(SingletonComponent::class)
 object FeatureXModule {
-
     @Provides
     fun providesModuleXFeatureApi(): ModuleXApi = ModuleX()
 }

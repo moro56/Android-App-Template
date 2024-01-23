@@ -9,7 +9,6 @@ import com.app.featurey.impl.ui.FeatureYScreen
 import com.app.featurez.api.ModuleZApi
 
 class ModuleY : ModuleYApi {
-
     override fun registerGraph(
         navGraphBuilder: NavGraphBuilder,
         navController: NavController,

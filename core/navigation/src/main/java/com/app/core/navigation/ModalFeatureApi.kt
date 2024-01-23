@@ -1,8 +1,9 @@
 package com.app.core.navigation
 
+import androidx.compose.material3.SheetState
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
-import androidx.navigation.NavGraphBuilder
 
 /**
  * Interface that defines a modal feature
@@ -11,20 +12,24 @@ import androidx.navigation.NavGraphBuilder
  * @property show show this feature modal
  */
 interface ModalFeatureApi {
-
     val featureRoute: String
     var show: (currentRoute: String, params: Map<String, String>) -> Unit
 
     /**
-     * Register the feature to the navigation graph
+     * Define the content of the modal
      *
-     * @param navGraphBuilder navigation graph builder
      * @param navController navigation controller
+     * @param sheetState bottomSheet state
+     * @param params optional params
+     * @param onHide lambda for closing the modal
      * @param modifier compose modifier
      */
-    fun registerGraph(
-        navGraphBuilder: NavGraphBuilder,
+    @Composable
+    fun ModalContent(
         navController: NavController,
-        modifier: Modifier = Modifier
+        sheetState: SheetState,
+        params: Map<String, String>,
+        onHide: () -> Unit,
+        modifier: Modifier
     )
 }
