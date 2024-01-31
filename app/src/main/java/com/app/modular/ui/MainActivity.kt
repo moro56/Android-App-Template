@@ -30,9 +30,7 @@ class MainActivity : ComponentActivity() {
             AndroidAppTemplateTheme {
                 val navController = rememberNavController()
                 val snackBarHostState = remember { SnackbarHostState() }
-                val globalState = rememberSaveable(saver = globalStateSaver) {
-                    GlobalState(userLoggedIn = false)
-                }
+                val globalState = rememberSaveable(saver = globalStateSaver) { GlobalState() }
 
                 // A surface container using the 'background' color from the theme
                 Surface(

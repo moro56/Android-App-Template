@@ -30,59 +30,66 @@ class GlobalStateTest {
 
     @Test
     fun `global state initialize correctly`() {
-        var userLoggedIn = false
-        var bottomBarState = false
+        var isUserLoggedIn = true
+        var showBottomBar = false
 
         composeTestRule.setContent {
             val globalState = rememberSaveable(saver = globalStateSaver) {
-                GlobalState(userLoggedIn = userLoggedIn)
+                GlobalState()
             }
             CompositionLocalProvider(LocalAppState provides globalState) {
                 val globalStateLocal = LocalAppState.current
 
                 SideEffect {
-                    userLoggedIn = globalStateLocal.isUserLoggedIn
-                    bottomBarState = globalStateLocal.bottomBarState
+                    isUserLoggedIn = globalStateLocal.userLoggedIn
+                    showBottomBar = globalStateLocal.bottomBarVisible
                 }
 
                 Box {}
             }
         }
 
-        Assert.assertEquals(false, userLoggedIn)
-        Assert.assertEquals(true, bottomBarState)
+        Assert.assertEquals(false, isUserLoggedIn)
+        Assert.assertEquals(true, showBottomBar)
     }
 
     @Test
     fun `global state change correctly`() {
-        val userLoggedIn = false
-        var bottomBarState = true
+        var isUserLoggedIn = false
+        var showBottomBar = true
 
         composeTestRule.setContent {
             val globalState = rememberSaveable(saver = globalStateSaver) {
-                GlobalState(userLoggedIn = userLoggedIn)
+                GlobalState()
             }
             CompositionLocalProvider(LocalAppState provides globalState) {
                 val globalStateLocal = LocalAppState.current
 
                 SideEffect {
-                    globalStateLocal.bottomBarState = false
-                    bottomBarState = globalStateLocal.bottomBarState
+                    globalStateLocal.userLoggedIn = true
+                    globalStateLocal.bottomBarVisible = false
+                    isUserLoggedIn = globalStateLocal.userLoggedIn
+                    showBottomBar = globalStateLocal.bottomBarVisible
                 }
 
                 Box {}
             }
         }
 
-        Assert.assertEquals(false, bottomBarState)
+        Assert.assertEquals(true, isUserLoggedIn)
+        Assert.assertEquals(false, showBottomBar)
     }
 
     @Test
     fun `global state saver works correctly`() {
-        var userLoggedIn = true
+        var isUserLoggedIn = true
+        var showBottomBar = false
 
         composeTestRule.setContent {
-            val globalState = GlobalState(userLoggedIn = userLoggedIn)
+            val globalState = GlobalState().apply {
+                userLoggedIn = isUserLoggedIn
+                bottomBarVisible = showBottomBar
+            }
 
             val saverState = rememberUpdatedState(globalStateSaver)
             val savedString = with(saverState.value) {
@@ -91,11 +98,13 @@ class GlobalStateTest {
 
             savedString?.also { saved ->
                 globalStateSaver.restore(saved)?.also {
-                    userLoggedIn = it.isUserLoggedIn
+                    isUserLoggedIn = it.userLoggedIn
+                    showBottomBar = it.bottomBarVisible
                 }
             }
         }
 
-        Assert.assertEquals(true, userLoggedIn)
+        Assert.assertEquals(true, isUserLoggedIn)
+        Assert.assertEquals(false, showBottomBar)
     }
 }
