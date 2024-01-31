@@ -17,7 +17,7 @@ class TestPlugin : Plugin<Project> {
             dependencies {
                 val test = libs.findBundle("test").get()
                 val androidTest = libs.findBundle("android-test").get()
-                add("implementation", project(":core:test"))
+                add("testImplementation", project(":core:test"))
                 add("testImplementation", test)
                 add("androidTestImplementation", androidTest)
             }

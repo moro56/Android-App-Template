@@ -30,5 +30,9 @@ gradlePlugin {
             id = "hilt-plugin"
             implementationClass = "com.app.gradle.HiltPlugin"
         }
+        register("test-plugin") {
+            id = "test-plugin"
+            implementationClass = "com.app.gradle.TestPlugin"
+        }
     }
 }
