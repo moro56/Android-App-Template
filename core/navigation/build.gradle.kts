@@ -9,3 +9,7 @@ plugins {
 android {
     namespace = "com.app.core.navigation"
 }
+
+dependencies {
+    testImplementation(project(":core:test"))
+}
