@@ -59,6 +59,7 @@ class ModulePlugin : Plugin<Project> {
                     packagingOptions.setExcludes(
                         mutableSetOf(
                             "META-INF/**",
+                            "LICENSE.txt",
                             "LICENSE"
                         )
                     )

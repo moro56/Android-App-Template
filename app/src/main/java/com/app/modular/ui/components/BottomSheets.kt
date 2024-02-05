@@ -18,6 +18,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.navigation.NavHostController
 import com.app.core.navigation.Navigator
 import com.app.featureb.api.ModuleBModalApi
@@ -126,9 +127,12 @@ fun BottomSheetContent(
                 modifier = modifier
                     .fillMaxWidth()
                     .fillMaxHeight(0.97f)
+                    .testTag("Feature2BottomSheet")
             )
 
-            else -> Box(modifier = modifier.fillMaxSize()) {}
+            else -> Box(modifier = modifier
+                .fillMaxSize()
+                .testTag("EmptyBottomSheet")) {}
         }
     }
 }
