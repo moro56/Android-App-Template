@@ -34,7 +34,6 @@ class CorePlugin : Plugin<Project> {
             add("implementation", project(":core:base"))
             add("implementation", project(":core:mvi"))
             add("implementation", project(":core:navigation"))
-            add("implementation", project(":core:test"))
         }
     }
 }
