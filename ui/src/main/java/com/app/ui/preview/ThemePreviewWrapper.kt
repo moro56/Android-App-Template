@@ -13,9 +13,7 @@ import com.app.ui.LocalSnackBarHostState
 @Composable
 fun ThemePreviewWrapper(content: @Composable () -> Unit) {
     val snackBarHostState = remember { SnackbarHostState() }
-    val globalState = rememberSaveable(saver = globalStateSaver) {
-        GlobalState(userLoggedIn = false)
-    }
+    val globalState = rememberSaveable(saver = globalStateSaver) { GlobalState() }
     CompositionLocalProvider(
         LocalAppState provides globalState,
         LocalSnackBarHostState provides snackBarHostState,

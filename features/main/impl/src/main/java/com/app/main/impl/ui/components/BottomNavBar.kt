@@ -34,16 +34,16 @@ fun BottomNavBar(navController: NavHostController) {
     // Show or hide the navigation bar on navigation
     when (navBackStackEntry?.destination?.route) {
         ModuleZApi.Destinations.FeatureZ.route -> {
-            globalState.bottomBarState = false
+            globalState.bottomBarVisible = false
         }
 
         else -> {
-            globalState.bottomBarState = true
+            globalState.bottomBarVisible = true
         }
     }
 
     AnimatedVisibility(
-        visible = globalState.bottomBarState,
+        visible = globalState.bottomBarVisible,
         enter = slideInVertically(initialOffsetY = { it }),
         exit = slideOutVertically(targetOffsetY = { it })
     ) {

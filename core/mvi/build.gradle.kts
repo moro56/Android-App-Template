@@ -8,3 +8,7 @@ plugins {
 android {
     namespace = "com.app.core.mvi"
 }
+
+dependencies {
+    testImplementation(project(":core:test"))
+}

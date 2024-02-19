@@ -52,12 +52,4 @@ dependencies {
     implementation(project(":features:main:api"))
     implementation(project(":features:main:impl"))
     implementation(project(":ui"))
-
-    implementation(libs.lifecycle.runtime.ktx)
-    implementation(libs.ui.tooling.preview)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.test.ext.junit)
-    androidTestImplementation(libs.espresso.core)
-    androidTestImplementation(libs.ui.test.junit4)
-    debugImplementation(libs.ui.test.manifest)
 }

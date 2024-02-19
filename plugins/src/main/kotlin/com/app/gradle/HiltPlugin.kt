@@ -22,11 +22,16 @@ class HiltPlugin : Plugin<Project> {
                 val hiltNavigation = libs.findLibrary("hilt-navigation").get()
                 val lifecycleViewModel = libs.findLibrary("lifecycle-viewmodel-ktx").get()
                 val hiltKapt = libs.findLibrary("hilt-kapt").get()
+                val hiltTest = libs.findLibrary("hilt-test").get()
 
                 add("implementation", hilt)
                 add("implementation", hiltNavigation)
                 add("implementation", lifecycleViewModel)
                 add("kapt", hiltKapt)
+                add("testImplementation", hiltTest)
+                add("kaptTest", hiltKapt)
+                add("androidTestImplementation", hiltTest)
+                add("kaptAndroidTest", hiltKapt)
             }
         }
     }

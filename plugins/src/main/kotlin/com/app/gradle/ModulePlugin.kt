@@ -34,7 +34,7 @@ class ModulePlugin : Plugin<Project> {
                         minSdk = 26
                         targetSdk = 34
 
-                        testInstrumentationRunner = "androidx.tets.runner.AndroidJUnitRunner"
+                        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
                     }
 
                     compileOptions {
@@ -50,10 +50,19 @@ class ModulePlugin : Plugin<Project> {
                             freeCompilerArgs = listOf(
                                 "-Xstring-concat=inline",
                                 "-Xlint:deprecation",
-                                "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api"
+                                "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api",
+                                "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
                             )
                         }
                     }
+
+                    packagingOptions.setExcludes(
+                        mutableSetOf(
+                            "META-INF/**",
+                            "LICENSE.txt",
+                            "LICENSE"
+                        )
+                    )
 
                     testOptions {
                         unitTests {
@@ -89,7 +98,10 @@ class ModulePlugin : Plugin<Project> {
             getByName("release") {
                 isDebuggable = false
                 isMinifyEnabled = true
-                proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+                proguardFiles(
+                    getDefaultProguardFile("proguard-android-optimize.txt"),
+                    "proguard-rules.pro"
+                )
             }
         }
 
