@@ -32,6 +32,7 @@ lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-view
 compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "compose-bom" }
 compose-activity = { group = "androidx.activity", name = "activity-compose", version.ref = "compose-activity" }
 compose-navigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "compose-navigation" }
+compose-navigation-test = { group = "androidx.navigation", name = "navigation-testing", version.ref = "compose-navigation" }
 compose-material3 = { group = "androidx.compose.material3", name = "material3" }
 compose-ui = { group = "androidx.compose.ui", name = "ui" }
 compose-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
@@ -62,7 +63,7 @@ material = { group = "com.google.android.material", name = "material", version.r
 [bundles]
 compose = ["compose.material3", "compose.ui", "compose.ui.graphics", "compose.activity", "compose.navigation", "ui.tooling.preview"]
 lifecycle = ["lifecycle.runtime.ktx", "lifecycle.viewmodel"]
-test = ["core.test", "mockk", "mockk.android", "mockk.agent", "junit", "coroutines.test", "robolectric"]
+test = ["core.test", "mockk", "mockk.android", "mockk.agent", "junit", "coroutines.test", "robolectric", "compose.navigation", "compose.navigation.test"]
 android-test = ["androidx.test.ext.junit", "espresso-core", "coroutines.test"]
 
 [plugins]
