@@ -17,7 +17,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.app.core.base.annotations.PreviewDefaultLight
 import com.app.core.base.state.LocalAppState
-import com.app.core.navigation.NavScreen
+import com.app.core.navigation.models.NavScreen
 import com.app.main.models.Screens
 
 /**

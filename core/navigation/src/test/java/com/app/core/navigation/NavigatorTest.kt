@@ -34,7 +34,6 @@ class NavigatorTest {
         Navigator.openModal(Feature3::class, mockk())
 
         verify { feature3.show("route", any()) }
-
     }
 
     // MOCKS

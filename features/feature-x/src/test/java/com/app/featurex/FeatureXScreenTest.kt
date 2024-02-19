@@ -40,7 +40,6 @@ class FeatureXScreenTest {
         composeTestRule.onNodeWithText("Go to C").assertIsDisplayed()
     }
 
-
     @Test
     fun `buttons work correctly`() {
         var showCCaptured = false

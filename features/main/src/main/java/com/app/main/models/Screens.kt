@@ -5,7 +5,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.ui.graphics.vector.ImageVector
-import com.app.core.navigation.NavScreen
+import com.app.core.navigation.models.NavScreen
 
 sealed class Screens(val route: String, @StringRes val title: Int, val icon: ImageVector) {
     data object FeatureXScreen : Screens(

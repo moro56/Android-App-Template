@@ -18,6 +18,4 @@ hilt {
 dependencies {
     // Core
     implementation(libs.core.ktx)
-
-    implementation(project(":features:feature-b:api"))
 }

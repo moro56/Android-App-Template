@@ -41,7 +41,6 @@ class ModalFeatureBScreenTest {
         composeTestRule.onNodeWithText("Close").assertIsDisplayed()
     }
 
-
     @Test
     fun `buttons work correctly`() {
         var closeCaptured = false

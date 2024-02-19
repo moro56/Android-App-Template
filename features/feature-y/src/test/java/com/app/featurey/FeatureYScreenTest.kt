@@ -40,7 +40,6 @@ class FeatureYScreenTest {
         composeTestRule.onNodeWithText("Go to Z").assertIsDisplayed()
     }
 
-
     @Test
     fun `buttons work correctly`() {
         var showZCaptured = false

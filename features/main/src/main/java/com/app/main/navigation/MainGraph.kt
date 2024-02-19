@@ -8,7 +8,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.app.core.navigation.AppNavigator
-import com.app.core.navigation.NavScreen
+import com.app.core.navigation.models.NavScreen
 import com.app.featurec.FeatureC
 import com.app.featurex.FeatureX
 import com.app.featurey.FeatureY

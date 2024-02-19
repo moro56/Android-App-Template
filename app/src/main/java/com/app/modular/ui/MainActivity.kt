@@ -15,6 +15,8 @@ import androidx.navigation.compose.rememberNavController
 import com.app.core.base.state.GlobalState
 import com.app.core.base.state.LocalAppState
 import com.app.core.base.state.globalStateSaver
+import com.app.core.navigation.LocalNavigationState
+import com.app.core.navigation.NavigationState
 import com.app.modular.navigation.AppNavGraph
 import com.app.modular.ui.components.BottomSheetLayout
 import com.app.modular.ui.theme.AndroidAppTemplateTheme
@@ -31,6 +33,7 @@ class MainActivity : ComponentActivity() {
                 val navController = rememberNavController()
                 val snackBarHostState = remember { SnackbarHostState() }
                 val globalState = rememberSaveable(saver = globalStateSaver) { GlobalState() }
+                val navigationState = remember { NavigationState() }
 
                 // A surface container using the 'background' color from the theme
                 Surface(
@@ -39,13 +42,14 @@ class MainActivity : ComponentActivity() {
                 ) {
                     CompositionLocalProvider(
                         LocalAppState provides globalState,
-                        LocalSnackBarHostState provides snackBarHostState
+                        LocalSnackBarHostState provides snackBarHostState,
+                        LocalNavigationState provides navigationState
                     ) {
-                        BottomSheetLayout(navController = navController)
                         AppNavGraph(
                             navController = navController,
                             modifier = Modifier.fillMaxSize()
                         )
+                        BottomSheetLayout()
                     }
                 }
             }

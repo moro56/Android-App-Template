@@ -1,13 +1,15 @@
 package com.app.modular.ui.components
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.BottomSheetDefaults
 import androidx.compose.material3.ModalBottomSheet
-import androidx.compose.material3.SheetState
 import androidx.compose.material3.SheetValue
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -16,17 +18,18 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
-import androidx.navigation.NavHostController
+import com.app.core.navigation.LocalNavigationState
+import com.app.core.navigation.models.NavBottomSheet
+import com.app.featureb.FeatureBBottomSheet
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 /**
  * BottomSheet
- *
- * @param navController navigation controller
  */
 @Composable
-fun BottomSheetLayout(navController: NavHostController) {
+fun BottomSheetLayout() {
+    val navigationState = LocalNavigationState.current
     val coroutineScope = rememberCoroutineScope()
 
     // BottomSheet states
@@ -38,53 +41,38 @@ fun BottomSheetLayout(navController: NavHostController) {
         confirmValueChange = { it != SheetValue.PartiallyExpanded }
     )
 
-    // Hide BottomSheet lambda
-    val hideBottomSheet: () -> Unit = remember {
-        {
-            if (modalBottomSheetState.isVisible) {
+    // Show/Hide bottomSheet logic
+    LaunchedEffect(navigationState.bottomSheetData) {
+        when (val state = navigationState.bottomSheetData) {
+            null -> coroutineScope.launch {
+                modalBottomSheetState.hide()
+                showSheet = false
+            }
+
+            else -> {
+                showSheet = true
+                modalRoute = state.route
+                modalParams = state.params
                 coroutineScope.launch {
-                    modalBottomSheetState.hide()
-                    showSheet = false
+                    if (modalBottomSheetState.isVisible) {
+                        modalBottomSheetState.hide()
+                    }
+                    delay(100)
+                    modalBottomSheetState.show()
                 }
             }
         }
     }
-
-    // Show BottomSheet lambda
-    val showBottomSheet: (String, Map<String, String>) -> Unit = remember {
-        { route, params ->
-            showSheet = true
-            modalRoute = route
-            modalParams = params
-            coroutineScope.launch {
-                if (modalBottomSheetState.isVisible) {
-                    modalBottomSheetState.hide()
-                }
-                delay(100)
-                modalBottomSheetState.show()
-            }
-        }
-    }
-
-//    LaunchedEffect(true) {
-//        // Feature B Modal
-//        Navigator.retrieveModalFeature(ModuleBModalApi::class).apply {
-//            show = showBottomSheet
-//        }
-//    }
 
     if (showSheet) {
         ModalBottomSheet(
             sheetState = modalBottomSheetState,
-            onDismissRequest = { showSheet = false },
+            onDismissRequest = { navigationState.hideBottomSheet() },
             dragHandle = { BottomSheetDefaults.DragHandle() }
         ) {
             BottomSheetContent(
                 modifier = Modifier,
                 route = modalRoute,
-                navController = navController,
-                sheetState = modalBottomSheetState,
-                hideBottomSheet = hideBottomSheet,
                 params = modalParams
             )
         }
@@ -96,34 +84,23 @@ fun BottomSheetLayout(navController: NavHostController) {
  *
  * @param modifier compose modifier
  * @param route modal feature route
- * @param navController navigation controller
- * @param sheetState bottomSheet state
- * @param hideBottomSheet lambda for closing the modal
  * @param params optional params
  */
 @Composable
 fun BottomSheetContent(
     modifier: Modifier,
     route: String,
-    navController: NavHostController,
-    sheetState: SheetState,
-    hideBottomSheet: () -> Unit,
     params: Map<String, String>
 ) {
-//    val modalFeatureB = remember { Navigator.retrieveModalFeature(ModuleBModalApi::class) }
-
     Box {
         when (route) {
-//            ModuleBModalApi.featureRoute -> modalFeatureB.ModalContent(
-//                navController = navController,
-//                sheetState = sheetState,
-//                params = params,
-//                onHide = hideBottomSheet,
-//                modifier = modifier
-//                    .fillMaxWidth()
-//                    .fillMaxHeight(0.97f)
-//                    .testTag("Feature2BottomSheet")
-//            )
+            NavBottomSheet.FeatureB.route -> FeatureBBottomSheet(
+                modifier = modifier
+                    .fillMaxWidth()
+                    .fillMaxHeight(0.97f)
+                    .testTag("Feature2BottomSheet"),
+                params = params
+            )
 
             else -> Box(
                 modifier = modifier

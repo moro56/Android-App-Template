@@ -1,26 +1,23 @@
 package com.app.featureb
 
-import androidx.compose.material3.SheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavController
-import com.app.featureb.api.ModuleBModalApi
+import com.app.core.navigation.LocalNavigationState
+import com.app.core.navigation.models.NavBottomSheet
 import com.app.featureb.ui.ModalFeatureBScreen
 
-class ModalModuleB : ModuleBModalApi {
+@Composable
+fun FeatureBBottomSheet(
+    modifier: Modifier,
+    params: Map<String, String>
+) {
+    val navigationState = LocalNavigationState.current
 
-    override val featureRoute: String = ModuleBModalApi.featureRoute
-    override var show: (currentRoute: String, params: Map<String, String>) -> Unit = { _, _ -> }
-
-    @Composable
-    override fun ModalContent(
-        navController: NavController,
-        sheetState: SheetState,
-        params: Map<String, String>,
-        onHide: () -> Unit,
-        modifier: Modifier
-    ) {
-        val param = params[ModuleBModalApi.param]
-        ModalFeatureBScreen(modifier = modifier, title = param ?: "", onCloseClick = onHide)
-    }
+    ModalFeatureBScreen(
+        modifier = modifier,
+        title = params[NavBottomSheet.FeatureB.paramTitle] ?: "",
+        onCloseClick = {
+            navigationState.hideBottomSheet()
+        }
+    )
 }

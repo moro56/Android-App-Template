@@ -40,7 +40,6 @@ class FeatureZScreenTest {
         composeTestRule.onNodeWithText("Go back").assertIsDisplayed()
     }
 
-
     @Test
     fun `buttons work correctly`() {
         var goBackCaptured = false
