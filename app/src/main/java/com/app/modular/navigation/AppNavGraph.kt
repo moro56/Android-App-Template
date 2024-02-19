@@ -10,9 +10,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.app.core.navigation.AppNavigator
 import com.app.core.navigation.NavScreen
-import com.app.featurea.impl.FeatureA
-import com.app.featureb.impl.FeatureB
-import com.app.main.impl.MainFeature
+import com.app.featurea.FeatureA
+import com.app.featureb.FeatureB
+import com.app.main.MainFeature
 
 /**
  * NavHost component that defines the navigation graph

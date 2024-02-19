@@ -1,16 +1,13 @@
 package com.app.modular.ui.components
 
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.BottomSheetDefaults
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.SheetState
 import androidx.compose.material3.SheetValue
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -20,7 +17,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.navigation.NavHostController
-import com.app.core.navigation.Navigator
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -129,9 +125,11 @@ fun BottomSheetContent(
 //                    .testTag("Feature2BottomSheet")
 //            )
 
-            else -> Box(modifier = modifier
-                .fillMaxSize()
-                .testTag("EmptyBottomSheet")) {}
+            else -> Box(
+                modifier = modifier
+                    .fillMaxSize()
+                    .testTag("EmptyBottomSheet")
+            ) {}
         }
     }
 }

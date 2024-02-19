@@ -28,26 +28,13 @@
             <option value="$PROJECT_DIR$/core/test" />
             <option value="$PROJECT_DIR$/features" />
             <option value="$PROJECT_DIR$/features/feature-a" />
-            <option value="$PROJECT_DIR$/features/feature-a/api" />
-            <option value="$PROJECT_DIR$/features/feature-a/impl" />
             <option value="$PROJECT_DIR$/features/feature-b" />
             <option value="$PROJECT_DIR$/features/feature-b/api" />
-            <option value="$PROJECT_DIR$/features/feature-b/impl" />
             <option value="$PROJECT_DIR$/features/feature-c" />
-            <option value="$PROJECT_DIR$/features/feature-c/api" />
-            <option value="$PROJECT_DIR$/features/feature-c/impl" />
             <option value="$PROJECT_DIR$/features/feature-x" />
-            <option value="$PROJECT_DIR$/features/feature-x/api" />
-            <option value="$PROJECT_DIR$/features/feature-x/impl" />
             <option value="$PROJECT_DIR$/features/feature-y" />
-            <option value="$PROJECT_DIR$/features/feature-y/api" />
-            <option value="$PROJECT_DIR$/features/feature-y/impl" />
             <option value="$PROJECT_DIR$/features/feature-z" />
-            <option value="$PROJECT_DIR$/features/feature-z/api" />
-            <option value="$PROJECT_DIR$/features/feature-z/impl" />
             <option value="$PROJECT_DIR$/features/main" />
-            <option value="$PROJECT_DIR$/features/main/api" />
-            <option value="$PROJECT_DIR$/features/main/impl" />
             <option value="$PROJECT_DIR$/plugins" />
             <option value="$PROJECT_DIR$/ui" />
           </set>
