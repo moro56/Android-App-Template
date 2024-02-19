@@ -1,34 +1,26 @@
 package com.app.featurea.impl
 
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavController
-import androidx.navigation.NavGraphBuilder
-import androidx.navigation.compose.composable
+import com.app.core.navigation.AppNavigator
+import com.app.core.navigation.NavCommand
+import com.app.core.navigation.NavScreen
 import com.app.core.navigation.Navigator
-import com.app.featurea.api.ModuleAApi
 import com.app.featurea.impl.ui.FeatureAScreen
-import com.app.featureb.api.ModuleBApi
 import com.app.featureb.api.ModuleBModalApi
 
-class ModuleA : ModuleAApi {
-    override fun registerGraph(
-        navGraphBuilder: NavGraphBuilder,
-        navController: NavController,
-        modifier: Modifier
-    ) {
-        navGraphBuilder.composable(ModuleAApi.Destinations.FeatureA.route) {
-            FeatureAScreen(
-                modifier = modifier,
-                onGoToBClick = {
-                    navController.navigate(ModuleBApi.Destinations.FeatureB.navigateTo())
-                },
-                onShowFeatureBModalClick = {
-                    Navigator.openModal(
-                        ModuleBModalApi::class,
-                        mapOf(ModuleBModalApi.param to "Feature B Modal")
-                    )
-                }
+@Composable
+fun FeatureA(appNavigator: AppNavigator, modifier: Modifier) {
+    FeatureAScreen(
+        modifier = modifier,
+        onGoToBClick = {
+            appNavigator.navigate(command = NavCommand.NavigateToRoute(NavScreen.FeatureB.route))
+        },
+        onShowFeatureBModalClick = {
+            Navigator.openModal(
+                ModuleBModalApi::class,
+                mapOf(ModuleBModalApi.param to "Feature B Modal")
             )
         }
-    }
+    )
 }

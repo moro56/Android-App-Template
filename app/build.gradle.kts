@@ -37,9 +37,7 @@ dependencies {
     // App Startup
     implementation(libs.app.startup)
 
-    implementation(project(":features:feature-a:api"))
     implementation(project(":features:feature-a:impl"))
-    implementation(project(":features:feature-b:api"))
     implementation(project(":features:feature-b:impl"))
     implementation(project(":features:feature-c:api"))
     implementation(project(":features:feature-c:impl"))
@@ -49,7 +47,6 @@ dependencies {
     implementation(project(":features:feature-y:impl"))
     implementation(project(":features:feature-z:api"))
     implementation(project(":features:feature-z:impl"))
-    implementation(project(":features:main:api"))
     implementation(project(":features:main:impl"))
     implementation(project(":ui"))
 }

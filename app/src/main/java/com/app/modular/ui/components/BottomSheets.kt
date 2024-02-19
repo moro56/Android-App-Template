@@ -21,7 +21,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.navigation.NavHostController
 import com.app.core.navigation.Navigator
-import com.app.featureb.api.ModuleBModalApi
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -71,12 +70,12 @@ fun BottomSheetLayout(navController: NavHostController) {
         }
     }
 
-    LaunchedEffect(true) {
-        // Feature B Modal
-        Navigator.retrieveModalFeature(ModuleBModalApi::class).apply {
-            show = showBottomSheet
-        }
-    }
+//    LaunchedEffect(true) {
+//        // Feature B Modal
+//        Navigator.retrieveModalFeature(ModuleBModalApi::class).apply {
+//            show = showBottomSheet
+//        }
+//    }
 
     if (showSheet) {
         ModalBottomSheet(
@@ -115,20 +114,20 @@ fun BottomSheetContent(
     hideBottomSheet: () -> Unit,
     params: Map<String, String>
 ) {
-    val modalFeatureB = remember { Navigator.retrieveModalFeature(ModuleBModalApi::class) }
+//    val modalFeatureB = remember { Navigator.retrieveModalFeature(ModuleBModalApi::class) }
 
     Box {
         when (route) {
-            ModuleBModalApi.featureRoute -> modalFeatureB.ModalContent(
-                navController = navController,
-                sheetState = sheetState,
-                params = params,
-                onHide = hideBottomSheet,
-                modifier = modifier
-                    .fillMaxWidth()
-                    .fillMaxHeight(0.97f)
-                    .testTag("Feature2BottomSheet")
-            )
+//            ModuleBModalApi.featureRoute -> modalFeatureB.ModalContent(
+//                navController = navController,
+//                sheetState = sheetState,
+//                params = params,
+//                onHide = hideBottomSheet,
+//                modifier = modifier
+//                    .fillMaxWidth()
+//                    .fillMaxHeight(0.97f)
+//                    .testTag("Feature2BottomSheet")
+//            )
 
             else -> Box(modifier = modifier
                 .fillMaxSize()

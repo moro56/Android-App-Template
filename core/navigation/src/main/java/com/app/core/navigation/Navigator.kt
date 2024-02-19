@@ -1,6 +1,31 @@
 package com.app.core.navigation
 
+import androidx.navigation.NavController
 import kotlin.reflect.KClass
+
+abstract class Navigator1 {
+
+    abstract val navController: NavController
+
+    abstract fun navigate(command: NavCommand)
+}
+
+class AppNavigator(override val navController: NavController) : Navigator1() {
+    override fun navigate(command: NavCommand) {
+        when (command) {
+            NavCommand.GoBack -> navController.popBackStack()
+            is NavCommand.GoBackToRoute -> navController.popBackStack(
+                command.route,
+                command.inclusive
+            )
+
+            is NavCommand.NavigateToRoute -> navController.navigate(
+                command.route,
+                navOptions = command.options
+            )
+        }
+    }
+}
 
 object Navigator {
     private val destinations = mutableMapOf<String, FeatureApi>()
@@ -27,10 +52,12 @@ object Navigator {
     }
 
     @Suppress("UNCHECKED_CAST")
-    fun <T : FeatureApi> retrieveFeature(feature: KClass<T>): T = destinations[feature.java.name]!! as T
+    fun <T : FeatureApi> retrieveFeature(feature: KClass<T>): T =
+        destinations[feature.java.name]!! as T
 
     @Suppress("UNCHECKED_CAST")
-    fun <T : ModalFeatureApi> retrieveModalFeature(feature: KClass<T>): T = modalDestinations[feature.java.name]!! as T
+    fun <T : ModalFeatureApi> retrieveModalFeature(feature: KClass<T>): T =
+        modalDestinations[feature.java.name]!! as T
 
     fun <T : ModalFeatureApi> openModal(
         feature: KClass<T>,

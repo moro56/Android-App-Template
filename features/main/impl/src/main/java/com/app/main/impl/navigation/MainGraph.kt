@@ -2,44 +2,39 @@ package com.app.main.impl.navigation
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import com.app.core.navigation.Navigator
-import com.app.core.navigation.exts.register
-import com.app.featurec.api.ModuleCApi
-import com.app.featurex.api.ModuleXApi
-import com.app.featurey.api.ModuleYApi
-import com.app.featurez.api.ModuleZApi
-import com.app.main.api.MainFeatureApi
+import androidx.navigation.compose.composable
+import com.app.core.navigation.AppNavigator
+import com.app.core.navigation.NavScreen
+import com.app.featurec.impl.FeatureC
+import com.app.featurex.impl.FeatureX
+import com.app.featurey.impl.FeatureY
+import com.app.featurez.impl.FeatureZ
 
 @Composable
 fun MainGraph(navController: NavHostController, modifier: Modifier) {
+    val appNavigator = remember { AppNavigator(navController = navController) }
+
     NavHost(
         modifier = Modifier.fillMaxSize(),
         navController = navController,
-        route = MainFeatureApi.Destinations.Main.route,
-        startDestination = ModuleXApi.Destinations.FeatureX.route
+        route = NavScreen.Main.route,
+        startDestination = NavScreen.FeatureX.route
     ) {
-        register(
-            Navigator.retrieveFeature(ModuleXApi::class),
-            navController = navController,
-            modifier = modifier
-        )
-        register(
-            Navigator.retrieveFeature(ModuleYApi::class),
-            navController = navController,
-            modifier = modifier
-        )
-        register(
-            Navigator.retrieveFeature(ModuleCApi::class),
-            navController = navController,
-            modifier = modifier
-        )
-        register(
-            Navigator.retrieveFeature(ModuleZApi::class),
-            navController = navController,
-            modifier = Modifier.fillMaxSize()
-        )
+        composable(NavScreen.FeatureC.route) {
+            FeatureC(appNavigator = appNavigator, modifier = modifier)
+        }
+        composable(NavScreen.FeatureX.route) {
+            FeatureX(appNavigator = appNavigator, modifier = modifier)
+        }
+        composable(NavScreen.FeatureY.route) {
+            FeatureY(appNavigator = appNavigator, modifier = modifier)
+        }
+        composable(NavScreen.FeatureZ.route) {
+            FeatureZ(appNavigator = appNavigator, modifier = modifier.fillMaxSize())
+        }
     }
 }

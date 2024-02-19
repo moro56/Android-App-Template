@@ -20,9 +20,9 @@ dependencies {
     implementation(libs.core.ktx)
 
     implementation(project(":features:main:api"))
-    implementation(project(":features:feature-x:api"))
-    implementation(project(":features:feature-y:api"))
-    implementation(project(":features:feature-c:api"))
-    implementation(project(":features:feature-z:api"))
+    implementation(project(":features:feature-x:impl"))
+    implementation(project(":features:feature-y:impl"))
+    implementation(project(":features:feature-c:impl"))
+    implementation(project(":features:feature-z:impl"))
     implementation(project(":ui"))
 }

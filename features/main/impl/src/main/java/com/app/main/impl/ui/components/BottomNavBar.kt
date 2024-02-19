@@ -17,7 +17,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.app.core.base.annotations.PreviewDefaultLight
 import com.app.core.base.state.LocalAppState
-import com.app.featurez.api.ModuleZApi
+import com.app.core.navigation.NavScreen
 import com.app.main.impl.models.Screens
 
 /**
@@ -33,7 +33,7 @@ fun BottomNavBar(navController: NavHostController) {
 
     // Show or hide the navigation bar on navigation
     when (navBackStackEntry?.destination?.route) {
-        ModuleZApi.Destinations.FeatureZ.route -> {
+        NavScreen.FeatureZ.route -> {
             globalState.bottomBarVisible = false
         }
 

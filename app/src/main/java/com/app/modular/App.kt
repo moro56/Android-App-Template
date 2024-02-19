@@ -11,6 +11,6 @@ class App : Application() {
         super.onCreate()
 
         // Initialize navigator
-        AppInitializer.getInstance(this).initializeComponent(NavigatorInitializer::class.java)
+//        AppInitializer.getInstance(this).initializeComponent(NavigatorInitializer::class.java)
     }
 }

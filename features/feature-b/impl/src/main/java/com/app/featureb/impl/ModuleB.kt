@@ -1,34 +1,31 @@
 package com.app.featureb.impl
 
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavController
-import androidx.navigation.NavGraphBuilder
-import androidx.navigation.compose.composable
-import com.app.featurea.api.ModuleAApi
-import com.app.featureb.api.ModuleBApi
+import androidx.navigation.navOptions
+import com.app.core.navigation.AppNavigator
+import com.app.core.navigation.NavCommand
+import com.app.core.navigation.NavScreen
 import com.app.featureb.impl.ui.FeatureBScreen
-import com.app.main.api.MainFeatureApi
 
-class ModuleB : ModuleBApi {
-    override fun registerGraph(
-        navGraphBuilder: NavGraphBuilder,
-        navController: NavController,
-        modifier: Modifier
-    ) {
-        navGraphBuilder.composable(ModuleBApi.Destinations.FeatureB.route) {
-            FeatureBScreen(
-                modifier = modifier,
-                onGoToMainClick = {
-                    navController.navigate(MainFeatureApi.Destinations.Main.navigateTo()) {
-                        popUpTo(ModuleAApi.Destinations.FeatureA.route) {
+@Composable
+fun FeatureB(appNavigator: AppNavigator, modifier: Modifier) {
+    FeatureBScreen(
+        modifier = modifier,
+        onGoToMainClick = {
+            appNavigator.navigate(
+                command = NavCommand.NavigateToRoute(
+                    NavScreen.Main.route,
+                    options = navOptions {
+                        popUpTo(NavScreen.FeatureA.route) {
                             inclusive = true
                         }
                     }
-                },
-                onGoBackClick = {
-                    navController.popBackStack()
-                }
+                )
             )
+        },
+        onGoBackClick = {
+            appNavigator.navigate(command = NavCommand.GoBack)
         }
-    }
+    )
 }
