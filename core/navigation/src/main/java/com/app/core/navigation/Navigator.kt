@@ -1,43 +1,46 @@
 package com.app.core.navigation
 
-import kotlin.reflect.KClass
+import android.os.Bundle
+import androidx.navigation.NavController
+import com.app.core.navigation.models.NavCommand
 
-object Navigator {
-    private val destinations = mutableMapOf<String, FeatureApi>()
-    private val modalDestinations = mutableMapOf<String, ModalFeatureApi>()
+/**
+ * Navigator class
+ */
+abstract class Navigator {
 
-    fun initialize(
-        features: List<FeatureApi>,
-        modalFeatures: List<ModalFeatureApi>
-    ) {
-        features.forEach {
-            registerFeature(it)
-        }
-        modalFeatures.forEach {
-            registerModalFeature(it)
-        }
-    }
+    abstract val navController: NavController
 
-    private fun registerFeature(feature: FeatureApi) {
-        destinations[feature.javaClass.interfaces[0].name] = feature
-    }
+    /**
+     * Method for navigating to the correct destination
+     *
+     * @param command [NavCommand] that describes the destination
+     */
+    abstract fun navigate(command: NavCommand)
 
-    private fun registerModalFeature(feature: ModalFeatureApi) {
-        modalDestinations[feature.javaClass.interfaces[0].name] = feature
-    }
+    // Current backStackEntry arguments
+    val arguments: Bundle?
+        get() = navController.currentBackStackEntry?.arguments
+}
 
-    @Suppress("UNCHECKED_CAST")
-    fun <T : FeatureApi> retrieveFeature(feature: KClass<T>): T = destinations[feature.java.name]!! as T
+/**
+ * Navigator class implementation
+ *
+ * @property navController navigation controller
+ */
+class AppNavigator(override val navController: NavController) : Navigator() {
+    override fun navigate(command: NavCommand) {
+        when (command) {
+            NavCommand.GoBack -> navController.popBackStack()
+            is NavCommand.GoBackToRoute -> navController.popBackStack(
+                command.route,
+                command.inclusive
+            )
 
-    @Suppress("UNCHECKED_CAST")
-    fun <T : ModalFeatureApi> retrieveModalFeature(feature: KClass<T>): T = modalDestinations[feature.java.name]!! as T
-
-    fun <T : ModalFeatureApi> openModal(
-        feature: KClass<T>,
-        params: Map<String, String>
-    ) {
-        retrieveModalFeature(feature).also {
-            it.show.invoke(it.featureRoute, params)
+            is NavCommand.NavigateToRoute -> navController.navigate(
+                command.route,
+                navOptions = command.options
+            )
         }
     }
 }

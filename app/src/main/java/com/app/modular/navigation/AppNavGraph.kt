@@ -3,14 +3,16 @@ package com.app.modular.navigation
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import com.app.core.navigation.Navigator
-import com.app.core.navigation.exts.register
-import com.app.featurea.api.ModuleAApi
-import com.app.featureb.api.ModuleBApi
-import com.app.main.api.MainFeatureApi
+import androidx.navigation.compose.composable
+import com.app.core.navigation.AppNavigator
+import com.app.core.navigation.models.NavDestination
+import com.app.featurea.FeatureA
+import com.app.featureb.FeatureB
+import com.app.main.MainFeature
 
 /**
  * NavHost component that defines the navigation graph
@@ -20,27 +22,26 @@ import com.app.main.api.MainFeatureApi
  */
 @Composable
 fun AppNavGraph(modifier: Modifier = Modifier, navController: NavHostController) {
+    val appNavigator = remember { AppNavigator(navController = navController) }
+
     NavHost(
         modifier = Modifier
             .fillMaxWidth()
             .fillMaxHeight(),
         navController = navController,
-        startDestination = ModuleAApi.Destinations.FeatureA.route
+        startDestination = NavDestination.FeatureA.route
     ) {
-        register(
-            Navigator.retrieveFeature(MainFeatureApi::class),
-            navController = navController,
-            modifier = modifier
-        )
-        register(
-            Navigator.retrieveFeature(ModuleAApi::class),
-            navController = navController,
-            modifier = modifier
-        )
-        register(
-            Navigator.retrieveFeature(ModuleBApi::class),
-            navController = navController,
-            modifier = modifier
-        )
+        composable(NavDestination.FeatureA.route) {
+            FeatureA(appNavigator = appNavigator, modifier = modifier)
+        }
+        composable(
+            NavDestination.FeatureB.completeRoute,
+            arguments = NavDestination.FeatureB.arguments
+        ) {
+            FeatureB(appNavigator = appNavigator, modifier = modifier)
+        }
+        composable(NavDestination.Main.route) {
+            MainFeature(modifier = modifier)
+        }
     }
 }
