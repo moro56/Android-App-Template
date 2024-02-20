@@ -8,7 +8,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.app.core.navigation.AppNavigator
-import com.app.core.navigation.models.NavScreen
+import com.app.core.navigation.models.NavDestination
 import com.app.featurec.FeatureC
 import com.app.featurex.FeatureX
 import com.app.featurey.FeatureY
@@ -21,19 +21,19 @@ fun MainGraph(navController: NavHostController, modifier: Modifier) {
     NavHost(
         modifier = Modifier.fillMaxSize(),
         navController = navController,
-        route = NavScreen.Main.route,
-        startDestination = NavScreen.FeatureX.route
+        route = NavDestination.Main.route,
+        startDestination = NavDestination.FeatureX.route
     ) {
-        composable(NavScreen.FeatureC.route) {
+        composable(NavDestination.FeatureC.route) {
             FeatureC(appNavigator = appNavigator, modifier = modifier)
         }
-        composable(NavScreen.FeatureX.route) {
+        composable(NavDestination.FeatureX.route) {
             FeatureX(appNavigator = appNavigator, modifier = modifier)
         }
-        composable(NavScreen.FeatureY.route) {
+        composable(NavDestination.FeatureY.route) {
             FeatureY(appNavigator = appNavigator, modifier = modifier)
         }
-        composable(NavScreen.FeatureZ.route) {
+        composable(NavDestination.FeatureZ.route) {
             FeatureZ(appNavigator = appNavigator, modifier = modifier.fillMaxSize())
         }
     }

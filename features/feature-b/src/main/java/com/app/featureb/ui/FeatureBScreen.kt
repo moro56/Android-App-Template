@@ -15,13 +15,20 @@ import com.app.core.base.annotations.PreviewDefaultLight
  * Feature B screen
  *
  * @param modifier compose modifier
+ * @param titleSuffix title suffix
  * @param onGoToMainClick trigger for navigating to Main
  * @param onGoBackClick trigger for navigating back
  */
 @Composable
-fun FeatureBScreen(modifier: Modifier, onGoToMainClick: () -> Unit, onGoBackClick: () -> Unit) {
+fun FeatureBScreen(
+    modifier: Modifier,
+    titleSuffix: String,
+    onGoToMainClick: () -> Unit,
+    onGoBackClick: () -> Unit
+) {
     FeatureBScreenContent(
         modifier = modifier,
+        titleSuffix = titleSuffix,
         onGoToMainClick = onGoToMainClick,
         onGoBackClick = onGoBackClick
     )
@@ -31,12 +38,14 @@ fun FeatureBScreen(modifier: Modifier, onGoToMainClick: () -> Unit, onGoBackClic
  * Feature B screen content
  *
  * @param modifier compose modifier
+ * @param titleSuffix title suffix
  * @param onGoToMainClick trigger for navigating to Main
  * @param onGoBackClick trigger for navigating back
  */
 @Composable
 fun FeatureBScreenContent(
     modifier: Modifier,
+    titleSuffix: String,
     onGoToMainClick: () -> Unit,
     onGoBackClick: () -> Unit
 ) {
@@ -45,7 +54,7 @@ fun FeatureBScreenContent(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            Text(text = "Feature B")
+            Text(text = "Feature B $titleSuffix")
             Button(onClick = onGoToMainClick) {
                 Text(text = "Go to Main")
             }
@@ -59,5 +68,5 @@ fun FeatureBScreenContent(
 @PreviewDefaultLight
 @Composable
 fun FeatureBScreenContentPreview() {
-    FeatureBScreenContent(Modifier, {}, {})
+    FeatureBScreenContent(Modifier, "Test", {}, {})
 }

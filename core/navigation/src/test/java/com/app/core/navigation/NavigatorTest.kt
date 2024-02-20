@@ -1,5 +1,8 @@
 package com.app.core.navigation
 
+import androidx.navigation.NavOptions
+import com.app.core.navigation.models.NavCommand
+import com.app.core.navigation.models.NavDestination
 import io.mockk.every
 import io.mockk.justRun
 import io.mockk.mockk
@@ -10,39 +13,33 @@ import org.junit.Test
 class NavigatorTest {
 
     @Test
-    fun `test retrieve features`() {
-        Navigator.initialize(
-            features = listOf(feature1, feature2),
-            modalFeatures = listOf(feature3)
+    fun `test commands`() {
+        val navigator = AppNavigator(
+            navController = mockk {
+                every { popBackStack() } returns true
+                every { popBackStack(any<String>(), any()) } returns true
+                justRun { navigate(any<String>(), any<NavOptions>()) }
+            }
         )
 
-        Assert.assertNotNull(Navigator.retrieveFeature(Feature1::class))
-        Assert.assertNotNull(Navigator.retrieveFeature(Feature2::class))
-        Assert.assertNotNull(Navigator.retrieveModalFeature(Feature3::class))
+        navigator.navigate(NavCommand.GoBack)
+        verify { navigator.navController.popBackStack() }
+
+        navigator.navigate(NavCommand.NavigateToRoute("route1"))
+        verify { navigator.navController.navigate("route1") }
+
+        navigator.navigate(NavCommand.GoBackToRoute("route2", true))
+        verify { navigator.navController.popBackStack("route2", true) }
     }
 
     @Test
-    fun `test open modal`() {
-        Navigator.initialize(
-            features = listOf(),
-            modalFeatures = listOf(feature3)
+    fun `test destination with params`() {
+        val destination = NavDestination.FeatureB
+
+        Assert.assertEquals(
+            "featureB/{paramTitle}?paramValue={paramValue}",
+            destination.completeRoute
         )
-
-        every { feature3.featureRoute } returns "route"
-        justRun { feature3.show(any(), any()) }
-
-        Navigator.openModal(Feature3::class, mockk())
-
-        verify { feature3.show("route", any()) }
+        Assert.assertEquals("featureB/test?paramValue=11", destination.createRoute("test", 11))
     }
-
-    // MOCKS
-
-    private val feature1 = mockk<Feature1>()
-    private val feature2 = mockk<Feature2>()
-    private val feature3 = mockk<Feature3>()
-
-    interface Feature1 : FeatureApi
-    interface Feature2 : FeatureApi
-    interface Feature3 : ModalFeatureApi
 }

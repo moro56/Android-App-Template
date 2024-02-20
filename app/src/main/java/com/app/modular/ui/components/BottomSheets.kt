@@ -19,7 +19,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import com.app.core.navigation.LocalNavigationState
-import com.app.core.navigation.models.NavBottomSheet
+import com.app.core.navigation.models.NavModalDestination
 import com.app.featureb.FeatureBBottomSheet
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -94,7 +94,7 @@ fun BottomSheetContent(
 ) {
     Box {
         when (route) {
-            NavBottomSheet.FeatureB.route -> FeatureBBottomSheet(
+            NavModalDestination.FeatureB.route -> FeatureBBottomSheet(
                 modifier = modifier
                     .fillMaxWidth()
                     .fillMaxHeight(0.97f)

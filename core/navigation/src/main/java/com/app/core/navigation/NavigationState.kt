@@ -18,10 +18,11 @@ class NavigationState {
     /**
      * Show the bottomSheet
      *
-     * @param data bottomSheet info
+     * @param route route of the bottomSheet
+     * @param params params
      */
-    fun showBottomSheet(data: BottomSheetData) {
-        bottomSheetData = data
+    fun showBottomSheet(route: String, params: Map<String, String> = mapOf()) {
+        bottomSheetData = BottomSheetData(route, params)
     }
 
     /**

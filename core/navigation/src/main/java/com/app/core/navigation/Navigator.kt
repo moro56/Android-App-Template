@@ -1,7 +1,7 @@
 package com.app.core.navigation
 
+import android.os.Bundle
 import androidx.navigation.NavController
-import com.app.core.navigation.models.BottomSheetData
 import com.app.core.navigation.models.NavCommand
 
 /**
@@ -17,6 +17,10 @@ abstract class Navigator {
      * @param command [NavCommand] that describes the destination
      */
     abstract fun navigate(command: NavCommand)
+
+    // Current backStackEntry arguments
+    val arguments: Bundle?
+        get() = navController.currentBackStackEntry?.arguments
 }
 
 /**
@@ -36,13 +40,6 @@ class AppNavigator(override val navController: NavController) : Navigator() {
             is NavCommand.NavigateToRoute -> navController.navigate(
                 command.route,
                 navOptions = command.options
-            )
-
-            is NavCommand.OpenBottomSheet -> command.navigationState.showBottomSheet(
-                BottomSheetData(
-                    command.route,
-                    command.params
-                )
             )
         }
     }

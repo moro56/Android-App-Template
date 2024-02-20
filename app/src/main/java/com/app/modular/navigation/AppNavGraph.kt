@@ -9,7 +9,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.app.core.navigation.AppNavigator
-import com.app.core.navigation.models.NavScreen
+import com.app.core.navigation.models.NavDestination
 import com.app.featurea.FeatureA
 import com.app.featureb.FeatureB
 import com.app.main.MainFeature
@@ -29,31 +29,19 @@ fun AppNavGraph(modifier: Modifier = Modifier, navController: NavHostController)
             .fillMaxWidth()
             .fillMaxHeight(),
         navController = navController,
-        startDestination = NavScreen.FeatureA.route
+        startDestination = NavDestination.FeatureA.route
     ) {
-        composable(NavScreen.FeatureA.route) {
+        composable(NavDestination.FeatureA.route) {
             FeatureA(appNavigator = appNavigator, modifier = modifier)
         }
-        composable(NavScreen.FeatureB.route) {
+        composable(
+            NavDestination.FeatureB.completeRoute,
+            arguments = NavDestination.FeatureB.arguments
+        ) {
             FeatureB(appNavigator = appNavigator, modifier = modifier)
         }
-        composable(NavScreen.Main.route) {
+        composable(NavDestination.Main.route) {
             MainFeature(modifier = modifier)
         }
-//        register(
-//            Navigator.retrieveFeature(MainFeatureApi::class),
-//            navController = navController,
-//            modifier = modifier
-//        )
-//        register(
-//            Navigator.retrieveFeature(ModuleAApi::class),
-//            navController = navController,
-//            modifier = modifier
-//        )
-//        register(
-//            Navigator.retrieveFeature(ModuleBApi::class),
-//            navController = navController,
-//            modifier = modifier
-//        )
     }
 }
