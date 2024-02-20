@@ -12,21 +12,15 @@ val LocalAppState = compositionLocalOf { GlobalState() }
 class GlobalState {
     // User logged in state
     var userLoggedIn by mutableStateOf(false)
-
-    // Show/hide bottom bar
-    var bottomBarVisible by mutableStateOf(true)
 }
 
 val globalStateSaver = Saver<GlobalState, String>(
     save = {
-        "${it.userLoggedIn}|${it.bottomBarVisible}"
+        it.userLoggedIn.toString()
     },
     restore = {
-        it.split("|").let {
-            GlobalState().apply {
-                userLoggedIn = it.firstOrNull()?.toBoolean() ?: false
-                bottomBarVisible = it.lastOrNull()?.toBoolean() ?: true
-            }
+        GlobalState().apply {
+            userLoggedIn = it.toBoolean()
         }
     }
 )

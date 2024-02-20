@@ -31,7 +31,6 @@ class GlobalStateTest {
     @Test
     fun `global state initialize correctly`() {
         var isUserLoggedIn = true
-        var showBottomBar = false
 
         composeTestRule.setContent {
             val globalState = rememberSaveable(saver = globalStateSaver) {
@@ -42,7 +41,6 @@ class GlobalStateTest {
 
                 SideEffect {
                     isUserLoggedIn = globalStateLocal.userLoggedIn
-                    showBottomBar = globalStateLocal.bottomBarVisible
                 }
 
                 Box {}
@@ -50,13 +48,11 @@ class GlobalStateTest {
         }
 
         Assert.assertEquals(false, isUserLoggedIn)
-        Assert.assertEquals(true, showBottomBar)
     }
 
     @Test
     fun `global state change correctly`() {
         var isUserLoggedIn = false
-        var showBottomBar = true
 
         composeTestRule.setContent {
             val globalState = rememberSaveable(saver = globalStateSaver) {
@@ -67,9 +63,7 @@ class GlobalStateTest {
 
                 SideEffect {
                     globalStateLocal.userLoggedIn = true
-                    globalStateLocal.bottomBarVisible = false
                     isUserLoggedIn = globalStateLocal.userLoggedIn
-                    showBottomBar = globalStateLocal.bottomBarVisible
                 }
 
                 Box {}
@@ -77,18 +71,15 @@ class GlobalStateTest {
         }
 
         Assert.assertEquals(true, isUserLoggedIn)
-        Assert.assertEquals(false, showBottomBar)
     }
 
     @Test
     fun `global state saver works correctly`() {
         var isUserLoggedIn = true
-        var showBottomBar = false
 
         composeTestRule.setContent {
             val globalState = GlobalState().apply {
                 userLoggedIn = isUserLoggedIn
-                bottomBarVisible = showBottomBar
             }
 
             val saverState = rememberUpdatedState(globalStateSaver)
@@ -99,12 +90,10 @@ class GlobalStateTest {
             savedString?.also { saved ->
                 globalStateSaver.restore(saved)?.also {
                     isUserLoggedIn = it.userLoggedIn
-                    showBottomBar = it.bottomBarVisible
                 }
             }
         }
 
         Assert.assertEquals(true, isUserLoggedIn)
-        Assert.assertEquals(false, showBottomBar)
     }
 }

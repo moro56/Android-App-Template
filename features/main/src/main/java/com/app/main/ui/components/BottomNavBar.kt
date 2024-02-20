@@ -9,14 +9,15 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.app.core.base.annotations.PreviewDefaultLight
-import com.app.core.base.state.LocalAppState
 import com.app.core.navigation.models.NavDestination
 import com.app.main.models.Screens
 
@@ -28,22 +29,17 @@ import com.app.main.models.Screens
 @Composable
 fun BottomNavBar(navController: NavHostController) {
     val screens = remember { screenList() }
-    val globalState = LocalAppState.current
+    var bottomBarVisible by remember { mutableStateOf(true) }
     val navBackStackEntry by navController.currentBackStackEntryAsState()
 
     // Show or hide the navigation bar on navigation
-    when (navBackStackEntry?.destination?.route) {
-        NavDestination.FeatureZ.route -> {
-            globalState.bottomBarVisible = false
-        }
-
-        else -> {
-            globalState.bottomBarVisible = true
-        }
+    bottomBarVisible = when (navBackStackEntry?.destination?.route) {
+        NavDestination.FeatureZ.route -> false
+        else -> true
     }
 
     AnimatedVisibility(
-        visible = globalState.bottomBarVisible,
+        visible = bottomBarVisible,
         enter = slideInVertically(initialOffsetY = { it }),
         exit = slideOutVertically(targetOffsetY = { it })
     ) {
