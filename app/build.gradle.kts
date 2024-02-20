@@ -34,22 +34,13 @@ ktlint {
 dependencies {
     // Core
     implementation(libs.core.ktx)
-    // App Startup
-    implementation(libs.app.startup)
 
-    implementation(project(":features:feature-a:api"))
-    implementation(project(":features:feature-a:impl"))
-    implementation(project(":features:feature-b:api"))
-    implementation(project(":features:feature-b:impl"))
-    implementation(project(":features:feature-c:api"))
-    implementation(project(":features:feature-c:impl"))
-    implementation(project(":features:feature-x:api"))
-    implementation(project(":features:feature-x:impl"))
-    implementation(project(":features:feature-y:api"))
-    implementation(project(":features:feature-y:impl"))
-    implementation(project(":features:feature-z:api"))
-    implementation(project(":features:feature-z:impl"))
-    implementation(project(":features:main:api"))
-    implementation(project(":features:main:impl"))
+    implementation(project(":features:feature-a"))
+    implementation(project(":features:feature-b"))
+    implementation(project(":features:feature-c"))
+    implementation(project(":features:feature-x"))
+    implementation(project(":features:feature-y"))
+    implementation(project(":features:feature-z"))
+    implementation(project(":features:main"))
     implementation(project(":ui"))
 }

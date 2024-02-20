@@ -1,2 +1,2 @@
 # Android-App-Template
-Multi module app template
+MultiModule Android application template (WIP)
