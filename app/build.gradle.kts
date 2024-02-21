@@ -32,9 +32,6 @@ ktlint {
 }
 
 dependencies {
-    // Core
-    implementation(libs.core.ktx)
-
     implementation(project(":features:feature-a"))
     implementation(project(":features:feature-b"))
     implementation(project(":features:feature-c"))

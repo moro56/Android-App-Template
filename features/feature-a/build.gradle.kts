@@ -16,8 +16,5 @@ hilt {
 }
 
 dependencies {
-    // Core
-    implementation(libs.core.ktx)
-
     implementation(project(":ui"))
 }

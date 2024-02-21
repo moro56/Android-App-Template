@@ -14,8 +14,3 @@ android {
 hilt {
     enableAggregatingTask = true
 }
-
-dependencies {
-    // Core
-    implementation(libs.core.ktx)
-}

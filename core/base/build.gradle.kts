@@ -12,7 +12,6 @@ android {
 
 dependencies {
     // Core
-    implementation(libs.core.ktx)
     implementation(libs.bundles.lifecycle)
     // Json
     implementation(libs.serialization.json)

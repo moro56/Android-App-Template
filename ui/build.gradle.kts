@@ -9,8 +9,3 @@ plugins {
 android {
     namespace = "com.app.ui"
 }
-
-dependencies {
-    // Core
-    implementation(libs.core.ktx)
-}

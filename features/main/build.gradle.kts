@@ -16,9 +16,6 @@ hilt {
 }
 
 dependencies {
-    // Core
-    implementation(libs.core.ktx)
-
     implementation(project(":features:feature-x"))
     implementation(project(":features:feature-y"))
     implementation(project(":features:feature-c"))
