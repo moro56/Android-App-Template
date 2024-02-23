@@ -14,20 +14,28 @@ dependencies {
 
 gradlePlugin {
     plugins {
-        register("module-plugin") {
-            id = "module-plugin"
-            implementationClass = "com.app.gradle.ModulePlugin"
+        register("plugin.app") {
+            id = "plugin.app"
+            implementationClass = "com.app.gradle.ApplicationPlugin"
         }
-        register("compose-plugin") {
-            id = "compose-plugin"
-            implementationClass = "com.app.gradle.ComposePlugin"
+        register("plugin.app.compose") {
+            id = "plugin.app.compose"
+            implementationClass = "com.app.gradle.ApplicationComposePlugin"
         }
-        register("core-plugin") {
-            id = "core-plugin"
-            implementationClass = "com.app.gradle.CorePlugin"
+        register("plugin.feature") {
+            id = "plugin.feature"
+            implementationClass = "com.app.gradle.FeaturePlugin"
         }
-        register("hilt-plugin") {
-            id = "hilt-plugin"
+        register("plugin.library") {
+            id = "plugin.library"
+            implementationClass = "com.app.gradle.LibraryPlugin"
+        }
+        register("plugin.library.compose") {
+            id = "plugin.library.compose"
+            implementationClass = "com.app.gradle.LibraryComposePlugin"
+        }
+        register("plugin.hilt") {
+            id = "plugin.hilt"
             implementationClass = "com.app.gradle.HiltPlugin"
         }
     }

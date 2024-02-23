@@ -2,8 +2,8 @@ plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinAndroid)
     alias(libs.plugins.kotlinSerialization)
-    id("compose-plugin")
-    id("module-plugin")
+    id("plugin.library")
+    id("plugin.library.compose")
 }
 
 android {
