@@ -1,29 +1,13 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
-    id("module-plugin")
-    id("compose-plugin")
-    id("core-plugin")
-    id("hilt-plugin")
+    id("plugin.app")
+    id("plugin.app.compose")
+    id("plugin.hilt")
 }
 
 android {
     namespace = "com.app.modular"
-
-    defaultConfig {
-        applicationId = "com.app.modular"
-        versionCode = 1
-        versionName = "1.0.0"
-
-        vectorDrawables {
-            useSupportLibrary = true
-        }
-    }
-    packaging {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
-    }
 }
 
 ktlint {
@@ -32,9 +16,6 @@ ktlint {
 }
 
 dependencies {
-    // Core
-    implementation(libs.core.ktx)
-
     implementation(project(":features:feature-a"))
     implementation(project(":features:feature-b"))
     implementation(project(":features:feature-c"))

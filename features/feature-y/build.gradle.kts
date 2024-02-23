@@ -1,10 +1,9 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinAndroid)
-    id("compose-plugin")
-    id("module-plugin")
-    id("core-plugin")
-    id("hilt-plugin")
+    id("plugin.feature")
+    id("plugin.library.compose")
+    id("plugin.hilt")
 }
 
 android {
@@ -13,9 +12,4 @@ android {
 
 hilt {
     enableAggregatingTask = true
-}
-
-dependencies {
-    // Core
-    implementation(libs.core.ktx)
 }

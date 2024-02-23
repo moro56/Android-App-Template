@@ -2,8 +2,8 @@ plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinAndroid)
     alias(libs.plugins.kotlinSerialization)
-    id("compose-plugin")
-    id("module-plugin")
+    id("plugin.library")
+    id("plugin.library.compose")
 }
 
 android {
@@ -12,7 +12,6 @@ android {
 
 dependencies {
     // Core
-    implementation(libs.core.ktx)
     implementation(libs.bundles.lifecycle)
     // Json
     implementation(libs.serialization.json)

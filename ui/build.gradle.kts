@@ -1,9 +1,8 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinAndroid)
-    id("compose-plugin")
-    id("module-plugin")
-    id("core-plugin")
+    id("plugin.library")
+    id("plugin.library.compose")
 }
 
 android {
@@ -11,6 +10,6 @@ android {
 }
 
 dependencies {
-    // Core
-    implementation(libs.core.ktx)
+    implementation(project(":core:base"))
+    implementation(project(":core:navigation"))
 }
